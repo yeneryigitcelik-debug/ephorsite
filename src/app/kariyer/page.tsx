@@ -1,16 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AnimatedSection, { StaggerContainer, StaggerItem, TextReveal } from "@/components/AnimatedSection";
-
-const benefits = [
-  { title: "Kariyer Gelişimi", description: "Sürekli eğitim ve gelişim fırsatları.", icon: "📈" },
-  { title: "Takım Ruhu", description: "Destekleyici ve işbirlikçi çalışma ortamı.", icon: "🤝" },
-  { title: "Teknoloji", description: "En güncel teknolojilerle çalışma imkanı.", icon: "💻" },
-  { title: "Esnek Çalışma", description: "Modern ve esnek çalışma koşulları.", icon: "🏡" },
-];
+import AnimatedSection, { TextReveal } from "@/components/AnimatedSection";
 
 export default function Kariyer() {
   return (
@@ -28,46 +22,78 @@ export default function Kariyer() {
                 <TextReveal>Ekibimize</TextReveal>{" "}
                 <TextReveal delay={0.2}><span className="gradient-text">Katılın</span></TextReveal>
               </h1>
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="mt-8 max-w-2xl text-xl text-[var(--text-secondary)]">
-                Teknoloji tutkusuyla büyüyen ekibimizde yerinizi alın.
-              </motion.p>
             </motion.div>
           </div>
         </section>
 
+        {/* Content */}
         <section className="py-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <AnimatedSection className="text-center mb-16">
-              <h2 className="font-[var(--font-syne)] text-3xl md:text-5xl font-extrabold">
-                Neden <span className="gradient-text">ePhortech?</span>
-              </h2>
-            </AnimatedSection>
+          <div className="mx-auto max-w-4xl px-6 lg:px-8">
+            <div className="space-y-8">
+              <AnimatedSection>
+                <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
+                  EphorTech&apos;te, teknolojiye olan tutkumuzu ve yenilikçi bakış açımızı paylaşacak yetenekli bireyleri arıyoruz. Sektörün öncüsü olan ekibimize katılarak, modern teknoloji çözümleri sunma misyonumuza katkıda bulunabilir, kariyerinizi bir adım öteye taşıyabilirsiniz.
+                </p>
+              </AnimatedSection>
 
-            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.1}>
-              {benefits.map((b) => (
-                <StaggerItem key={b.title}>
-                  <div className="group gradient-border p-8 rounded-2xl hover:bg-[var(--bg-card-hover)] transition-all duration-300 text-center h-full">
-                    <span className="text-4xl mb-4 block group-hover:scale-110 transition-transform duration-300">{b.icon}</span>
-                    <h3 className="font-[var(--font-syne)] text-lg font-bold text-white mb-3">{b.title}</h3>
-                    <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{b.description}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
+              <AnimatedSection delay={0.15}>
+                <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
+                  İlgi alanlarınıza ve yeteneklerinize uygun pozisyonlarda siz de bizimle birlikte büyüyebilir ve gelişebilirsiniz. Yaratıcı, dinamik ve ileri görüşlü bir ekibin parçası olarak, teknoloji dünyasında iz bırakma fırsatını yakalayın.
+                </p>
+              </AnimatedSection>
+
+              <AnimatedSection delay={0.3}>
+                <p className="text-lg text-[var(--text-secondary)] leading-relaxed">
+                  EphorTech, herkesin eşit fırsatlara sahip olduğu bir işyeri sunar ve yeteneklerinizi en iyi şekilde değerlendirmenizi sağlar. Bizimle çalışmak isterseniz, başvurularınızı bekliyoruz!
+                </p>
+              </AnimatedSection>
+            </div>
           </div>
         </section>
 
-        {/* Open positions */}
+        {/* Visual */}
+        <section className="pb-8">
+          <div className="mx-auto max-w-4xl px-6 lg:px-8">
+            <AnimatedSection delay={0.2}>
+              <div className="relative rounded-2xl overflow-hidden group">
+                <Image src="/images/servis.png" alt="EphorTech Ekibi" width={800} height={350} className="w-full h-56 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700" quality={85} />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)]/70 to-transparent rounded-2xl" />
+                <div className="absolute bottom-5 left-6">
+                  <span className="font-[var(--font-syne)] text-lg font-bold text-white">Teknoloji tutkumuzu paylaşın</span>
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+
+        {/* CV Upload CTA */}
         <section className="py-32 bg-[var(--bg-secondary)]">
           <div className="mx-auto max-w-4xl px-6 lg:px-8">
-            <AnimatedSection className="text-center mb-16">
-              <h2 className="font-[var(--font-syne)] text-3xl md:text-4xl font-extrabold">Açık Pozisyonlar</h2>
-            </AnimatedSection>
-            <AnimatedSection delay={0.2}>
-              <div className="gradient-border p-12 rounded-2xl text-center">
-                <p className="text-[var(--text-secondary)] text-lg mb-6">
-                  Şu anda açık pozisyonlarımız için özgeçmişinizi bize gönderebilirsiniz.
+            <AnimatedSection className="text-center">
+              <div className="gradient-border p-12 md:p-16 rounded-2xl">
+                <h2 className="font-[var(--font-syne)] text-3xl md:text-4xl font-extrabold mb-6">
+                  Başvurunuzu <span className="gradient-text">Gönderin</span>
+                </h2>
+                <p className="text-[var(--text-secondary)] text-lg mb-10 max-w-xl mx-auto">
+                  Özgeçmişinizi bize göndererek kariyer fırsatlarından haberdar olun.
                 </p>
+
+                {/* File upload area */}
+                <div className="max-w-md mx-auto mb-8">
+                  <label className="group flex flex-col items-center gap-4 p-8 rounded-2xl border-2 border-dashed border-white/10 hover:border-[var(--brand-blue)]/30 bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] transition-all duration-300 cursor-pointer">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[var(--brand-blue)]/10 to-[var(--brand-blue-dark)]/10 border border-[var(--brand-blue)]/20 flex items-center justify-center text-[var(--brand-blue)] group-hover:scale-110 transition-transform">
+                      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                      </svg>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-white font-semibold mb-1">Özgeçmiş Dosyanızı Gönderin</p>
+                      <p className="text-sm text-[var(--text-muted)]">PDF, DOC veya DOCX dosyası yükleyin</p>
+                    </div>
+                    <input type="file" className="hidden" accept=".pdf,.doc,.docx" />
+                  </label>
+                </div>
+
                 <a
                   href="mailto:info@ephortech.com?subject=Kariyer Başvurusu"
                   className="group relative inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white rounded-full overflow-hidden"

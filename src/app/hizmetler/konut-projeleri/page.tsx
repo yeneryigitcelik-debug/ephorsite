@@ -17,7 +17,6 @@ export default function KonutProjeleri() {
 Rezidans, villa ve lüks konut projelerinde yaşayan sakinlerin teknoloji ihtiyaçlarına yönelik kapsamlı çözümler üretiyoruz. Akıllı ev sistemlerinden kişisel elektronik cihazlara kadar geniş bir yelpazede, konut sakinlerinin yaşam kalitesini artıran hizmetler sunuyoruz.
 
 Konut projesi yönetimleriyle işbirliği yaparak, sakinlere kesintisiz ve üst düzey teknoloji destek hizmeti sağlıyoruz.`}
-      heroImage="/images/konut.png"
       gradient="from-[#3A7BAD] to-[#5B93BE]"
       features={[
         { title: "Premium Destek", description: "Lüks konut standartlarında kişiselleştirilmiş hizmet.", icon: "👑" },

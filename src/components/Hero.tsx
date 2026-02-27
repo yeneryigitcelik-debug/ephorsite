@@ -142,7 +142,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-start overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -195,7 +195,7 @@ export default function Hero() {
       {/* === CONTENT === */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-20 w-full"
+        className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-[85px] lg:pt-[5px] pb-20 w-full"
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left content - spans 7 cols */}
@@ -224,7 +224,7 @@ export default function Hero() {
             <AnimatePresence mode="wait">
               <motion.h1
                 key={`title-${current}`}
-                className="font-[var(--font-syne)] text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold leading-[1.05] tracking-tight"
+                className="font-[var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight"
               >
                 <motion.span
                   initial={{ opacity: 0, y: 80, filter: "blur(12px)" }}
@@ -269,7 +269,7 @@ export default function Hero() {
               className="mt-10 flex flex-col sm:flex-row items-start gap-4"
             >
               <Link
-                href="/#services"
+                href="/iletisim"
                 className="group relative inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white rounded-full overflow-hidden magnetic-btn"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue-dark)] to-[var(--brand-blue)]" />
@@ -278,14 +278,14 @@ export default function Hero() {
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 </span>
                 <span className="relative z-10 flex items-center gap-2">
-                  Hizmetlerimiz
+                  İletişime Geç!
                   <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </span>
               </Link>
               <Link
-                href="/iletisim"
+                href="tel:08503350860"
                 className="group inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-[var(--text-secondary)] rounded-full border border-white/10 hover:border-[var(--brand-blue)]/30 hover:text-white hover:bg-white/[0.03] transition-all duration-500"
               >
                 <svg className="w-5 h-5 transition-colors duration-300 group-hover:text-[var(--brand-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -296,7 +296,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right - Slide thumbnails with 3D effect */}
+          {/* Right - Slide thumbnails */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}

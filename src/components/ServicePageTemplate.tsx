@@ -3,8 +3,7 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import AnimatedSection, { StaggerContainer, StaggerItem, TextReveal } from "./AnimatedSection";
+import AnimatedSection, { TextReveal } from "./AnimatedSection";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -22,7 +21,6 @@ interface ServicePageProps {
   features: Feature[];
   gradient: string;
   stats: { value: string; label: string }[];
-  heroImage?: string;
 }
 
 function Counter({ value }: { value: string }) {
@@ -69,15 +67,12 @@ export default function ServicePageTemplate({
   features,
   gradient,
   stats,
-  heroImage,
 }: ServicePageProps) {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const descParagraphs = longDescription.split("\n\n");
@@ -86,25 +81,111 @@ export default function ServicePageTemplate({
     <>
       <Navbar />
       <main>
-        {/* ===== HERO - Full bleed with parallax ===== */}
+        {/* ===== HERO - Abstract animated geometric ===== */}
         <section ref={heroRef} className="relative min-h-[85vh] flex items-end overflow-hidden">
-          {/* Parallax background image */}
-          {heroImage && (
-            <motion.div style={{ y: heroY, scale: heroScale }} className="absolute inset-0 z-0">
-              <Image
-                src={heroImage}
-                alt={title}
-                fill
-                className="object-cover"
-                priority
-              />
-              <div className="absolute inset-0 bg-[var(--bg-primary)]/60" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-[var(--bg-primary)]/70 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)]/90 to-transparent" />
-            </motion.div>
-          )}
+          {/* Animated background layer */}
+          <div className="absolute inset-0 z-0">
+            {/* Base gradient */}
+            <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-[0.06]`} />
+            <div className="absolute inset-0 bg-[var(--bg-primary)]/90" />
 
-          {!heroImage && <div className="hero-gradient" />}
+            {/* Floating orbs */}
+            <motion.div
+              animate={{ x: [0, 30, -20, 0], y: [0, -40, 20, 0], scale: [1, 1.2, 0.9, 1] }}
+              transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+              className={`absolute top-[15%] right-[20%] w-[400px] h-[400px] rounded-full bg-gradient-to-br ${gradient} opacity-[0.04] blur-[100px]`}
+            />
+            <motion.div
+              animate={{ x: [0, -25, 15, 0], y: [0, 30, -25, 0], scale: [1, 0.85, 1.15, 1] }}
+              transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute bottom-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-[var(--brand-blue)]/[0.03] blur-[80px]"
+            />
+            <motion.div
+              animate={{ x: [0, 20, -30, 0], y: [0, -20, 35, 0] }}
+              transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+              className={`absolute top-[50%] right-[5%] w-[250px] h-[250px] rounded-full bg-gradient-to-tl ${gradient} opacity-[0.03] blur-[60px]`}
+            />
+
+            {/* Geometric shapes - right side */}
+            <div className="absolute inset-0 overflow-hidden">
+              {/* Rotating ring */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+                className="absolute top-[20%] right-[12%] w-48 h-48 lg:w-72 lg:h-72"
+              >
+                <div className="w-full h-full rounded-full border border-[var(--brand-blue)]/[0.07] border-dashed" />
+              </motion.div>
+
+              {/* Counter-rotating ring */}
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                className="absolute top-[25%] right-[15%] w-36 h-36 lg:w-56 lg:h-56"
+              >
+                <div className="w-full h-full rounded-full border border-[var(--brand-blue)]/[0.05]" />
+              </motion.div>
+
+              {/* Floating dots */}
+              {[
+                { top: "18%", right: "22%", delay: 0, size: 4 },
+                { top: "35%", right: "8%", delay: 1.5, size: 3 },
+                { top: "55%", right: "18%", delay: 3, size: 5 },
+                { top: "25%", right: "35%", delay: 0.8, size: 3 },
+                { top: "65%", right: "28%", delay: 2.2, size: 4 },
+                { top: "45%", right: "38%", delay: 4, size: 3 },
+              ].map((dot, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: [0, 0.6, 0], scale: [0.5, 1, 0.5] }}
+                  transition={{ duration: 4, repeat: Infinity, delay: dot.delay, ease: "easeInOut" }}
+                  className="absolute rounded-full bg-[var(--brand-blue)]"
+                  style={{ top: dot.top, right: dot.right, width: dot.size, height: dot.size }}
+                />
+              ))}
+
+              {/* Horizontal lines */}
+              <motion.div
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ duration: 1.5, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute top-[40%] right-[5%] w-40 lg:w-64 h-px bg-gradient-to-l from-[var(--brand-blue)]/20 to-transparent origin-right"
+              />
+              <motion.div
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute top-[55%] right-[10%] w-28 lg:w-48 h-px bg-gradient-to-l from-[var(--brand-blue)]/15 to-transparent origin-right"
+              />
+
+              {/* Corner accent - top right */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                className="absolute top-[15%] right-[8%] hidden lg:block"
+              >
+                <svg width="120" height="120" viewBox="0 0 120 120" fill="none" className="opacity-[0.06]">
+                  <rect x="20" y="20" width="80" height="80" rx="4" stroke="var(--brand-blue)" strokeWidth="0.5" />
+                  <rect x="35" y="35" width="50" height="50" rx="4" stroke="var(--brand-blue)" strokeWidth="0.5" />
+                  <line x1="0" y1="60" x2="120" y2="60" stroke="var(--brand-blue)" strokeWidth="0.3" />
+                  <line x1="60" y1="0" x2="60" y2="120" stroke="var(--brand-blue)" strokeWidth="0.3" />
+                </svg>
+              </motion.div>
+
+              {/* Hexagonal shape */}
+              <motion.div
+                animate={{ rotate: [0, 60, 0] }}
+                transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute bottom-[25%] right-[15%] hidden lg:block"
+              >
+                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" className="opacity-[0.05]">
+                  <polygon points="50,5 90,27.5 90,72.5 50,95 10,72.5 10,27.5" stroke="var(--brand-blue)" strokeWidth="0.8" fill="none" />
+                </svg>
+              </motion.div>
+            </div>
+          </div>
 
           {/* Grid */}
           <div
@@ -127,7 +208,7 @@ export default function ServicePageTemplate({
               transition={{ duration: 0.5 }}
             >
               <Link
-                href="/#services"
+                href="/"
                 className="inline-flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-[var(--brand-blue)] transition-colors mb-10 group"
               >
                 <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">

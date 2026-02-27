@@ -330,6 +330,11 @@ body {
 }
 
 /* Gradient border rotate */
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.85; transform: translateY(-50%) translateX(0); }
+  50% { opacity: 1; transform: translateY(-50%) translateX(4px); }
+}
+
 @keyframes border-rotate {
   0% { --angle: 0deg; }
   100% { --angle: 360deg; }

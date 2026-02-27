@@ -17,7 +17,6 @@ export default function Kurumlar() {
 İşletmenizin ihtiyaçlarına göre özelleştirilen bakım ve onarım planlarımız, beklenmedik arızaları minimize ederek iş sürekliliğinizi korur. Periyodik bakım programlarımız sayesinde cihazlarınızın ömrünü uzatıyoruz.
 
 Kurumsal anlaşma kapsamında öncelikli destek, yerinde servis ve yedek cihaz hizmetleri sunarak, çalışanlarınızın hiçbir zaman teknoloji sorunuyla baş başa kalmamasını sağlıyoruz.`}
-      heroImage="/images/kurumlar.png"
       gradient="from-[var(--brand-blue-deeper)] to-[var(--brand-blue-dark)]"
       features={[
         { title: "Özel Paketler", description: "İşletmenize özel tasarlanmış esnek hizmet paketleri.", icon: "📦" },

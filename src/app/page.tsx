@@ -4,7 +4,7 @@ import Marquee from "@/components/Marquee";
 import TrustedBy from "@/components/TrustedBy";
 import Services from "@/components/Services";
 import About from "@/components/About";
-import Testimonials from "@/components/Testimonials";
+import BrandReveal from "@/components/BrandReveal";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import CursorGlow from "@/components/CursorGlow";
@@ -20,7 +20,7 @@ export default function Home() {
         <TrustedBy />
         <Services />
         <About />
-        <Testimonials />
+        <BrandReveal />
         <Contact />
       </main>
       <Footer />

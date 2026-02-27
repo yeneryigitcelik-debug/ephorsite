@@ -17,7 +17,6 @@ export default function SigortaFirmalari() {
 Konut sigortası ve ticari sigorta poliçeleri kapsamında, müşterilerinizin elektronik cihaz arızalarını en kısa sürede çözüme kavuşturuyoruz. 81 ilde kesintisiz operasyonel kapasitemizle, Türkiye'nin her noktasında aynı kalitede hizmet sunuyoruz.
 
 Sigorta firmalarıyla entegre çalışan altyapımız sayesinde, hasar bildiriminden onarım sürecine kadar tüm aşamalar şeffaf ve takip edilebilir şekilde yönetilmektedir.`}
-      heroImage="/images/sigorta.png"
       gradient="from-[var(--brand-blue-dark)] to-[var(--brand-blue)]"
       features={[
         { title: "81 İl Kapsama", description: "Türkiye genelinde kesintisiz servis ağı ile tüm poliçe sahiplerine ulaşıyoruz.", icon: "🗺️" },

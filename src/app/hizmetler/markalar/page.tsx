@@ -17,7 +17,6 @@ export default function Markalar() {
 Ofis ekipmanlarından çalışan cihazlarına kadar geniş bir yelpazede arıza ve hasar çözümleri sağlıyoruz. Markanızın itibarını koruyacak kalitede, hızlı ve etkili teknik servis hizmetleri ile teknoloji sorunlarını minimize ediyoruz.
 
 Marka bazlı özel anlaşmalarla, teknoloji yönetimi süreçlerinizi basitleştiriyor ve maliyetlerinizi optimize ediyoruz.`}
-      heroImage="/images/markalar.png"
       gradient="from-[var(--brand-blue)] to-[var(--brand-blue-light)]"
       features={[
         { title: "Marka Uyumu", description: "Markanızın kalite standartlarına uygun servis hizmeti.", icon: "🏷️" },

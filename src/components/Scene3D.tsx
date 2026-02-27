@@ -398,8 +398,11 @@ function AboutSceneInner({ zoom }: { zoom: React.RefObject<number> }) {
 
 // --- Zoom Buttons ---
 function ZoomButtons({ zoom }: { zoom: React.RefObject<number> }) {
+  const [hintVisible, setHintVisible] = useState(true);
+
   const handleZoomIn = useCallback(() => {
     zoom.current = Math.min(1, (zoom.current ?? 0) + 0.25);
+    setHintVisible(false);
   }, [zoom]);
 
   const handleZoomOut = useCallback(() => {
@@ -417,26 +420,62 @@ function ZoomButtons({ zoom }: { zoom: React.RefObject<number> }) {
       zIndex: 50,
       pointerEvents: "auto",
     }}>
-      <button
-        onClick={handleZoomIn}
-        style={{
-          width: 36,
-          height: 36,
-          borderRadius: "50%",
-          border: "1px solid rgba(139, 184, 218, 0.3)",
-          background: "rgba(10, 25, 47, 0.7)",
-          backdropFilter: "blur(8px)",
-          color: "#8BB8DA",
-          fontSize: 20,
-          fontWeight: 300,
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          pointerEvents: "auto",
-        }}
-        aria-label="Zoom in"
-      >+</button>
+      {/* + button with hint */}
+      <div style={{ position: "relative" }}>
+        {/* Hint label with arrow pointing to + */}
+        {hintVisible && (
+          <div style={{
+            position: "absolute",
+            right: 46,
+            top: "50%",
+            transform: "translateY(-50%)",
+            display: "flex",
+            alignItems: "center",
+            gap: 6,
+            whiteSpace: "nowrap",
+            pointerEvents: "none",
+            animation: "hintPulse 2s ease-in-out infinite",
+          }}>
+            <span style={{
+              fontSize: 11,
+              fontWeight: 500,
+              color: "#8BB8DA",
+              background: "rgba(10, 25, 47, 0.8)",
+              backdropFilter: "blur(8px)",
+              border: "1px solid rgba(139, 184, 218, 0.2)",
+              borderRadius: 8,
+              padding: "5px 10px",
+              lineHeight: 1.3,
+            }}>
+              Tüm hizmet noktalarını<br />görmek için tıkla
+            </span>
+            {/* Arrow pointing right toward + button */}
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" style={{ flexShrink: 0 }}>
+              <path d="M0 6h12M10 1l5 5-5 5" stroke="#8BB8DA" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+        )}
+        <button
+          onClick={handleZoomIn}
+          style={{
+            width: 36,
+            height: 36,
+            borderRadius: "50%",
+            border: "1px solid rgba(139, 184, 218, 0.3)",
+            background: "rgba(10, 25, 47, 0.7)",
+            backdropFilter: "blur(8px)",
+            color: "#8BB8DA",
+            fontSize: 20,
+            fontWeight: 300,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            pointerEvents: "auto",
+          }}
+          aria-label="Zoom in"
+        >+</button>
+      </div>
       <button
         onClick={handleZoomOut}
         style={{
