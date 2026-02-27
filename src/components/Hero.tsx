@@ -4,6 +4,9 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { useEffect, useState, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const ParticleNetwork = dynamic(() => import("./ParticleNetwork"), { ssr: false });
 
 const slides = [
   {
@@ -147,14 +150,14 @@ export default function Hero() {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* === BACKGROUND IMAGE LAYER === */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence initial={false}>
         <motion.div
           key={`bg-${current}`}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0 z-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-[-20px] z-0"
         >
           {/* Ken Burns animated image */}
           <motion.div
@@ -191,6 +194,9 @@ export default function Hero() {
           backgroundSize: "60px 60px",
         }}
       />
+
+      {/* 3D Particle Network */}
+      <ParticleNetwork />
 
       {/* === CONTENT === */}
       <motion.div

@@ -11,6 +11,7 @@ const navLinks = [
   { name: "Kurumlar", href: "/kurumlar" },
   { name: "Markalar", href: "/markalar" },
   { name: "Konut Projeleri", href: "/konut-projeleri" },
+  { name: "Blog", href: "/blog" },
   { name: "Kariyer", href: "/kariyer" },
   { name: "İletişim", href: "/iletisim" },
   { name: "Hakkımızda", href: "/hakkimizda" },

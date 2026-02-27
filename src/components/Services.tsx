@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import AnimatedSection, { StaggerContainer, StaggerItem } from "./AnimatedSection";
+
+const FloatingDevices = dynamic(() => import("./FloatingDevices"), { ssr: false });
 
 const services = [
   {
@@ -66,6 +69,8 @@ const services = [
 export default function Services() {
   return (
     <section id="services" className="relative py-32 overflow-hidden">
+      {/* 3D Floating Devices */}
+      <FloatingDevices />
       {/* Background ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-radial-[at_center] from-[var(--brand-blue)]/[0.025] to-transparent rounded-full" />
 

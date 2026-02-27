@@ -2,7 +2,10 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import AnimatedSection from "./AnimatedSection";
+
+const ContactEnvelope3D = dynamic(() => import("./ContactEnvelope3D"), { ssr: false });
 
 const contactInfo = [
   {
@@ -69,6 +72,8 @@ export default function Contact() {
   return (
     <section id="contact" className="relative py-32 overflow-hidden">
       <div className="section-divider" />
+      {/* 3D Envelope */}
+      <ContactEnvelope3D />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-radial-[at_center] from-[var(--brand-blue)]/[0.025] to-transparent rounded-full" />
 
       <div ref={ref} className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32">

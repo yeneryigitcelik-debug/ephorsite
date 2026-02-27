@@ -42,6 +42,7 @@ export default function Footer() {
                 { name: "Markalar", href: "/markalar" },
                 { name: "Kurumlar", href: "/kurumlar" },
                 { name: "Konut Projeleri", href: "/konut-projeleri" },
+                { name: "Blog", href: "/blog" },
               ].map((l) => (
                 <li key={l.name}>
                   <Link href={l.href} className="text-sm text-[var(--text-muted)] hover:text-[var(--brand-blue)] transition-colors duration-300">{l.name}</Link>

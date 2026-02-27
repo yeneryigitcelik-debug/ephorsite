@@ -1,8 +1,13 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const BrandReveal3DScene = dynamic(() => import("./BrandReveal3DScene"), {
+  ssr: false,
+  loading: () => null,
+});
 
 const brands = [
   "Samsung",
@@ -27,52 +32,79 @@ const brands = [
 
 export default function BrandReveal() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef(0);
+  const [hasWebGL, setHasWebGL] = useState(true);
+  const [reducedMotion, setReducedMotion] = useState(false);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  /* ── Phase 1 (0–0.2): section enters, title fades in, device floats ── */
-  /* ── Phase 2 (0.2–0.55): device rotates 3-D & shrinks ── */
-  /* ── Phase 3 (0.4–0.65): brands grid fades in ── */
+  // Bridge scroll -> ref (no re-renders)
+  useEffect(() => {
+    const unsub = scrollYProgress.on("change", (v) => {
+      scrollRef.current = v;
+    });
+    return unsub;
+  }, [scrollYProgress]);
 
-  // Device
-  const deviceScale = useTransform(scrollYProgress, [0, 0.2, 0.55], [1.05, 1, 0.45]);
-  const deviceRotateX = useTransform(scrollYProgress, [0.2, 0.55], [0, 55]);
-  const deviceY = useTransform(scrollYProgress, [0.2, 0.55], [0, -100]);
-  const deviceOpacity = useTransform(scrollYProgress, [0.4, 0.6], [1, 0]);
+  // WebGL check
+  useEffect(() => {
+    const canvas = document.createElement("canvas");
+    const gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
+    setHasWebGL(!!gl);
+  }, []);
 
-  // Glow behind device
-  const glowScale = useTransform(scrollYProgress, [0, 0.3, 0.55], [1, 1.3, 0.6]);
-  const glowOpacity = useTransform(scrollYProgress, [0.35, 0.55], [0.6, 0]);
+  // Reduced motion check
+  useEffect(() => {
+    setReducedMotion(
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    );
+  }, []);
 
-  // Title
+  const use3D = hasWebGL && !reducedMotion;
+
+  // Scroll-driven transforms for HTML overlays
   const titleOpacity = useTransform(scrollYProgress, [0.02, 0.15], [0, 1]);
   const titleY = useTransform(scrollYProgress, [0.02, 0.15], [40, 0]);
-
-  // Subtitle
   const subOpacity = useTransform(scrollYProgress, [0.1, 0.25], [0, 1]);
+  const statOpacity = useTransform(scrollYProgress, [0.7, 0.85], [0, 1]);
 
-  // Brand grid
+  // Fallback grid transforms (only used when 3D is off)
   const gridOpacity = useTransform(scrollYProgress, [0.4, 0.62], [0, 1]);
   const gridScale = useTransform(scrollYProgress, [0.4, 0.62], [0.92, 1]);
   const gridY = useTransform(scrollYProgress, [0.4, 0.62], [60, 0]);
 
   return (
-    <section ref={containerRef} className="relative" style={{ height: "175vh" }}>
+    <section ref={containerRef} className="relative" style={{ height: "200vh" }}>
       <div className="section-divider" />
 
       {/* Sticky viewport */}
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 h-screen overflow-hidden">
         {/* Ambient bg */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-[20%] right-[8%] w-[500px] h-[500px] bg-radial-[at_center] from-[var(--brand-blue)]/[0.03] to-transparent rounded-full" />
           <div className="absolute bottom-[15%] left-[5%] w-[400px] h-[400px] bg-radial-[at_center] from-[var(--brand-blue)]/[0.02] to-transparent rounded-full" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8 w-full">
+        {/* 3D Canvas */}
+        {use3D && (
+          <div className="absolute inset-0 z-0">
+            <BrandReveal3DScene scrollRef={scrollRef} />
+          </div>
+        )}
+
+        {/* HTML Overlays */}
+        <div className="relative z-10 h-full flex flex-col items-center px-6 lg:px-8">
+          {/* Top spacing */}
+          <div className="pt-16 md:pt-20" />
+
           {/* Title block */}
-          <motion.div style={{ opacity: titleOpacity, y: titleY }} className="text-center mb-6">
+          <motion.div
+            style={{ opacity: titleOpacity, y: titleY }}
+            className="text-center mb-4"
+          >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--brand-blue)]/15 bg-[var(--brand-blue)]/[0.06] text-sm font-medium text-[var(--brand-blue-light)] mb-5">
               <svg
                 className="w-3.5 h-3.5"
@@ -97,46 +129,20 @@ export default function BrandReveal() {
 
           <motion.p
             style={{ opacity: subOpacity }}
-            className="text-center text-lg text-[var(--text-secondary)] max-w-2xl mx-auto mb-10"
+            className="text-center text-lg text-[var(--text-secondary)] max-w-2xl"
           >
             Türkiye&apos;nin önde gelen markalarıyla iş birliği yaparak
             müşterilerimize en kaliteli hizmeti sunuyoruz.
           </motion.p>
 
-          {/* Overlap zone — device on top, brands behind */}
-          <div className="relative" style={{ minHeight: "340px" }}>
-            {/* ── Device image (3-D rotating) ── */}
-            <motion.div
-              style={{
-                scale: deviceScale,
-                rotateX: deviceRotateX,
-                y: deviceY,
-                opacity: deviceOpacity,
-                transformPerspective: 1200,
-              }}
-              className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
-            >
-              <div className="relative">
-                <Image
-                  src="/images/slider-devices.png"
-                  alt="Elektronik Cihazlar"
-                  width={560}
-                  height={410}
-                  className="w-full max-w-md md:max-w-lg h-auto object-contain drop-shadow-2xl"
-                  quality={85}
-                />
-                {/* Animated glow */}
-                <motion.div
-                  style={{ scale: glowScale, opacity: glowOpacity }}
-                  className="absolute inset-0 -z-10 bg-gradient-to-br from-[var(--brand-blue)]/20 to-[var(--brand-blue-dark)]/10 rounded-[40px] blur-[80px] scale-125"
-                />
-              </div>
-            </motion.div>
+          {/* Spacer for 3D content */}
+          <div className="flex-1" />
 
-            {/* ── Brand grid ── */}
+          {/* 2D Fallback grid (shown when WebGL off or reduced motion) */}
+          {!use3D && (
             <motion.div
               style={{ opacity: gridOpacity, scale: gridScale, y: gridY }}
-              className="relative z-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3"
+              className="w-full max-w-6xl grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 mb-8"
             >
               {brands.map((brand, i) => (
                 <motion.div
@@ -149,18 +155,17 @@ export default function BrandReveal() {
                   <span className="font-[var(--font-syne)] text-sm md:text-base font-semibold text-[var(--text-muted)] group-hover:text-white transition-colors duration-300">
                     {brand}
                   </span>
-                  {/* Corner accent on hover */}
                   <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-transparent group-hover:border-[var(--brand-blue)]/30 rounded-tl-xl transition-all duration-500" />
                   <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-transparent group-hover:border-[var(--brand-blue)]/30 rounded-br-xl transition-all duration-500" />
                 </motion.div>
               ))}
             </motion.div>
-          </div>
+          )}
 
           {/* Bottom stat line */}
           <motion.div
-            style={{ opacity: gridOpacity }}
-            className="mt-8 flex items-center justify-center gap-6 text-sm text-[var(--text-muted)]"
+            style={{ opacity: statOpacity }}
+            className="mb-10 flex items-center justify-center gap-6 text-sm text-[var(--text-muted)]"
           >
             <span className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-blue)]" />
