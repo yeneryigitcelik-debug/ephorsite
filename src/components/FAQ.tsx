@@ -51,7 +51,7 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
       >
         <button
           onClick={() => setOpen(!open)}
-          className="w-full flex items-center justify-between gap-4 p-6 md:p-8 text-left cursor-pointer"
+          className="w-full flex items-center justify-between gap-3 sm:gap-4 p-4 sm:p-6 md:p-8 text-left cursor-pointer"
         >
           <div className="flex items-center gap-4">
             <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--brand-blue)]/10 to-[var(--brand-blue-dark)]/10 border border-[var(--brand-blue)]/20 flex items-center justify-center text-xs font-bold text-[var(--brand-blue)]">
@@ -81,7 +81,7 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden"
             >
-              <div className="px-6 md:px-8 pb-6 md:pb-8 pl-[4.5rem] md:pl-[5.5rem]">
+              <div className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6 md:pb-8 pl-4 sm:pl-[4.5rem] md:pl-[5.5rem]">
                 <p className="text-[var(--text-secondary)] leading-relaxed">
                   {faq.answer}
                 </p>
@@ -96,11 +96,11 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
 
 export default function FAQ() {
   return (
-    <section id="sss" className="relative py-32 overflow-hidden">
+    <section id="sss" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
       <div className="section-divider" />
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-radial-[at_center] from-[var(--brand-blue)]/[0.02] to-transparent rounded-full" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-8 pt-20">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-20">
         <AnimatedSection className="text-center mb-16">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--brand-blue)]/15 bg-[var(--brand-blue)]/[0.06] text-sm font-medium text-[var(--brand-blue-light)] mb-6">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -108,11 +108,11 @@ export default function FAQ() {
             </svg>
             SSS
           </span>
-          <h2 className="font-[var(--font-syne)] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+          <h2 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
             Sıkça Sorulan{" "}
             <span className="gradient-text">Sorular</span>
           </h2>
-          <p className="mt-6 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             Merak ettiğiniz her şeyin yanıtını burada bulabilirsiniz.
           </p>
         </AnimatedSection>

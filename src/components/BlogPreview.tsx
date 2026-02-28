@@ -42,11 +42,11 @@ const categoryColors: Record<string, string> = {
 
 export default function BlogPreview() {
   return (
-    <section id="blog" className="relative py-32 overflow-hidden">
+    <section id="blog" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
       <div className="section-divider" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-radial-[at_center] from-[var(--brand-blue)]/[0.02] to-transparent rounded-full" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-20">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <AnimatedSection>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--brand-blue)]/15 bg-[var(--brand-blue)]/[0.06] text-sm font-medium text-[var(--brand-blue-light)] mb-6">
@@ -55,7 +55,7 @@ export default function BlogPreview() {
               </svg>
               Blog
             </span>
-            <h2 className="font-[var(--font-syne)] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+            <h2 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
               Güncel{" "}
               <span className="gradient-text">Yazılar</span>
             </h2>
@@ -73,14 +73,14 @@ export default function BlogPreview() {
           </AnimatedSection>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {posts.map((post, i) => (
             <AnimatedSection key={post.slug} delay={i * 0.1}>
               <Link href={`/blog/${post.slug}`}>
                 <motion.article
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="group h-full gradient-border p-6 md:p-8 rounded-2xl hover:bg-[var(--bg-card-hover)] transition-all duration-300 flex flex-col"
+                  className="group h-full gradient-border p-4 sm:p-6 md:p-8 rounded-2xl hover:bg-[var(--bg-card-hover)] transition-all duration-300 flex flex-col"
                 >
                   {/* Category & Meta */}
                   <div className="flex items-center justify-between mb-5">

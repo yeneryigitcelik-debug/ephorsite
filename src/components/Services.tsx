@@ -68,32 +68,32 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="relative py-32 overflow-hidden">
+    <section id="services" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
       {/* 3D Floating Devices */}
       <FloatingDevices />
       {/* Background ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-radial-[at_center] from-[var(--brand-blue)]/[0.025] to-transparent rounded-full" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Intro Section */}
-        <AnimatedSection className="text-center mb-20">
+        <AnimatedSection className="text-center mb-10 sm:mb-16 lg:mb-20">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--brand-blue)]/15 bg-[var(--brand-blue)]/[0.06] text-sm font-medium text-[var(--brand-blue-light)] mb-6">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
             Hizmetlerimiz
           </span>
-          <h2 className="font-[var(--font-syne)] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+          <h2 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
             EphorTech{" "}
             <span className="gradient-text">Teknoloji Servisi</span>
           </h2>
-          <p className="mt-6 max-w-3xl mx-auto text-lg text-[var(--text-secondary)] leading-relaxed">
+          <p className="mt-4 sm:mt-6 max-w-3xl mx-auto text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed">
             Hali hazırda var olan teknik servis anlayışını, modern servis çözümlerine dönüştüren yeni nesil bir teknoloji servisidir.
           </p>
         </AnimatedSection>
 
         {/* Bento Grid Layout */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-5" staggerDelay={0.15}>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5" staggerDelay={0.15}>
           {services.map((service, i) => (
             <StaggerItem key={service.slug} className="flex">
               <Link
@@ -105,7 +105,7 @@ export default function Services() {
 
                 <div className="relative z-10 flex flex-col flex-1">
                   {/* Image area */}
-                  <div className="relative h-52 overflow-hidden">
+                  <div className="relative h-40 sm:h-48 md:h-52 overflow-hidden">
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-10 group-hover:opacity-20 transition-opacity duration-700`} />
                     <Image
                       src={service.image}
@@ -131,7 +131,7 @@ export default function Services() {
                   </div>
 
                   {/* Content area */}
-                  <div className="p-6 pt-5 flex flex-col flex-1">
+                  <div className="p-4 pt-4 sm:p-6 sm:pt-5 flex flex-col flex-1">
                     {/* Icon + Title */}
                     <div className="flex items-center gap-3 mb-3">
                       <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center text-white/90 opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-[var(--brand-blue)]/20`}>

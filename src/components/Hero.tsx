@@ -79,7 +79,7 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
   }, [target, started]);
 
   return (
-    <span className="font-[var(--font-syne)] text-4xl md:text-5xl font-extrabold gradient-text tabular-nums">
+    <span className="font-[var(--font-syne)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold gradient-text tabular-nums">
       {count}{suffix}
     </span>
   );
@@ -230,7 +230,7 @@ export default function Hero() {
             <AnimatePresence mode="wait">
               <motion.h1
                 key={`title-${current}`}
-                className="font-[var(--font-syne)] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight"
+                className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight"
               >
                 <motion.span
                   initial={{ opacity: 0, y: 80, filter: "blur(12px)" }}
@@ -261,7 +261,7 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 exit={{ opacity: 0, y: -15, filter: "blur(4px)" }}
                 transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                className="mt-8 max-w-xl text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed"
+                className="mt-6 sm:mt-8 max-w-xl text-base sm:text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed"
               >
                 {slide.subtitle}
               </motion.p>
@@ -276,7 +276,7 @@ export default function Hero() {
             >
               <Link
                 href="/iletisim"
-                className="group relative inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-white rounded-full overflow-hidden magnetic-btn"
+                className="group relative inline-flex items-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-white rounded-full overflow-hidden magnetic-btn"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue-dark)] to-[var(--brand-blue)]" />
                 <span className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue)] to-[var(--brand-blue-light)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -292,7 +292,7 @@ export default function Hero() {
               </Link>
               <Link
                 href="tel:08503350860"
-                className="group inline-flex items-center gap-2 px-8 py-4 text-base font-semibold text-[var(--text-secondary)] rounded-full border border-white/10 hover:border-[var(--brand-blue)]/30 hover:text-white hover:bg-white/[0.03] transition-all duration-500"
+                className="group inline-flex items-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-[var(--text-secondary)] rounded-full border border-white/10 hover:border-[var(--brand-blue)]/30 hover:text-white hover:bg-white/[0.03] transition-all duration-500"
               >
                 <svg className="w-5 h-5 transition-colors duration-300 group-hover:text-[var(--brand-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -388,10 +388,10 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.6 + i * 0.15 }}
-                className="stat-card group relative flex flex-col items-center gap-3 py-6 px-4 rounded-2xl bg-white/[0.02] border border-white/[0.04] backdrop-blur-sm hover:bg-white/[0.04] hover:border-[var(--brand-blue)]/10 transition-all duration-500"
+                className="stat-card group relative flex flex-col items-center gap-2 sm:gap-3 py-4 px-3 sm:py-6 sm:px-4 rounded-2xl bg-white/[0.02] border border-white/[0.04] backdrop-blur-sm hover:bg-white/[0.04] hover:border-[var(--brand-blue)]/10 transition-all duration-500"
               >
-                <div className="w-10 h-10 rounded-xl bg-[var(--brand-blue)]/[0.08] border border-[var(--brand-blue)]/10 flex items-center justify-center mb-1 group-hover:scale-110 group-hover:bg-[var(--brand-blue)]/[0.12] transition-all duration-500">
-                  <svg className="w-5 h-5 text-[var(--brand-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[var(--brand-blue)]/[0.08] border border-[var(--brand-blue)]/10 flex items-center justify-center mb-1 group-hover:scale-110 group-hover:bg-[var(--brand-blue)]/[0.12] transition-all duration-500">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[var(--brand-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={stat.icon} />
                   </svg>
                 </div>

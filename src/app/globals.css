@@ -741,3 +741,33 @@ html {
   background-clip: text;
   animation: gradient-shift 6s ease infinite;
 }
+
+/* === BRAND MARQUEE === */
+@keyframes brand-scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes brand-scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-brand-scroll-left {
+  animation: brand-scroll-left var(--brand-scroll-speed, 35s) linear infinite;
+}
+
+.animate-brand-scroll-right {
+  animation: brand-scroll-right var(--brand-scroll-speed, 40s) linear infinite;
+}
+
+.brand-marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/* Pause marquee on hover for accessibility */
+.brand-marquee-mask:hover .animate-brand-scroll-left,
+.brand-marquee-mask:hover .animate-brand-scroll-right {
+  animation-play-state: paused;
+}

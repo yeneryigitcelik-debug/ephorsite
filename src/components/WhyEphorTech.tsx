@@ -50,34 +50,34 @@ const features = [
 
 export default function WhyEphorTech() {
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
       <div className="section-divider" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-radial-[at_center] from-[var(--brand-blue)]/[0.02] to-transparent rounded-full" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-20">
-        <AnimatedSection className="text-center mb-16">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-20">
+        <AnimatedSection className="text-center mb-10 sm:mb-16">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--brand-blue)]/15 bg-[var(--brand-blue)]/[0.06] text-sm font-medium text-[var(--brand-blue-light)] mb-6">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
             </svg>
             Neden Biz?
           </span>
-          <h2 className="font-[var(--font-syne)] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+          <h2 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
             Neden{" "}
             <span className="gradient-text">EphorTech?</span>
           </h2>
-          <p className="mt-6 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             Klasik teknik servis anlayışını modern çözümlere dönüştüren yeni nesil yaklaşımımızla fark yaratıyoruz.
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {features.map((f, i) => (
             <AnimatedSection key={f.number} delay={i * 0.08}>
               <motion.div
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="group gradient-border p-8 rounded-2xl h-full hover:bg-[var(--bg-card-hover)] transition-all duration-300"
+                className="group gradient-border p-5 sm:p-6 md:p-8 rounded-2xl h-full hover:bg-[var(--bg-card-hover)] transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-5">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--brand-blue)]/10 to-[var(--brand-blue-dark)]/10 border border-[var(--brand-blue)]/20 flex items-center justify-center text-[var(--brand-blue)] group-hover:scale-110 transition-transform duration-300">

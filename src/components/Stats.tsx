@@ -72,7 +72,7 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 
 export default function Stats() {
   return (
-    <section id="rakamlar" className="relative py-32 overflow-hidden">
+    <section id="rakamlar" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
       <div className="section-divider" />
 
       {/* 3D Glowing Ring */}
@@ -82,7 +82,7 @@ export default function Stats() {
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--bg-primary)] via-[var(--bg-secondary)]/50 to-[var(--bg-primary)]" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-radial-[at_center] from-[var(--brand-blue)]/[0.03] to-transparent rounded-full" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-20">
         <AnimatedSection className="text-center mb-16">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--brand-blue)]/15 bg-[var(--brand-blue)]/[0.06] text-sm font-medium text-[var(--brand-blue-light)] mb-6">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -90,29 +90,29 @@ export default function Stats() {
             </svg>
             Rakamlarla
           </span>
-          <h2 className="font-[var(--font-syne)] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+          <h2 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
             Rakamlarla{" "}
             <span className="gradient-text">EphorTech</span>
           </h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
           {stats.map((stat, i) => (
             <AnimatedSection key={stat.label} delay={i * 0.1}>
               <motion.div
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="group stat-card relative flex flex-col items-center text-center p-6 md:p-8 rounded-2xl border border-white/[0.04] bg-white/[0.01] hover:border-[var(--brand-blue)]/15 hover:bg-white/[0.03] transition-all duration-500"
+                className="group stat-card relative flex flex-col items-center text-center p-4 sm:p-6 md:p-8 rounded-2xl border border-white/[0.04] bg-white/[0.01] hover:border-[var(--brand-blue)]/15 hover:bg-white/[0.03] transition-all duration-500"
               >
                 {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--brand-blue)]/10 to-[var(--brand-blue-dark)]/10 border border-[var(--brand-blue)]/15 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[var(--brand-blue)]/10 to-[var(--brand-blue-dark)]/10 border border-[var(--brand-blue)]/15 flex items-center justify-center mb-3 sm:mb-5 group-hover:scale-110 transition-transform duration-500">
                   <svg className="w-5 h-5 text-[var(--brand-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={stat.icon} />
                   </svg>
                 </div>
 
                 {/* Number */}
-                <div className="font-[var(--font-syne)] text-3xl md:text-4xl font-extrabold gradient-text mb-2">
+                <div className="font-[var(--font-syne)] text-2xl sm:text-3xl md:text-4xl font-extrabold gradient-text mb-1 sm:mb-2">
                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
 

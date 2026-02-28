@@ -27,11 +27,11 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
       <div className="section-divider" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-radial-[at_center] from-[var(--brand-blue)]/[0.02] to-transparent rounded-full" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-20">
         <AnimatedSection className="text-center mb-16">
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--brand-blue)]/15 bg-[var(--brand-blue)]/[0.06] text-sm font-medium text-[var(--brand-blue-light)] mb-6">
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -39,19 +39,19 @@ export default function Testimonials() {
             </svg>
             Müşteri Yorumları
           </span>
-          <h2 className="font-[var(--font-syne)] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+          <h2 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
             Müşterilerimiz{" "}
             <span className="gradient-text">Ne Diyor?</span>
           </h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {testimonials.map((t, i) => (
             <AnimatedSection key={t.name} delay={i * 0.1}>
               <motion.div
                 whileHover={{ y: -4 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="testimonial-card p-8 h-full flex flex-col"
+                className="testimonial-card p-5 sm:p-6 md:p-8 h-full flex flex-col"
               >
                 {/* Stars */}
                 <div className="flex gap-1 mb-5">

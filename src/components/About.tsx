@@ -68,12 +68,12 @@ export default function About() {
   const featInView = useInView(featRef, { once: true, margin: "-50px" });
 
   return (
-    <section id="about" className="relative py-32 overflow-hidden">
+    <section id="about" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
       <div className="section-divider" />
       <div className="absolute bottom-0 right-0 w-[700px] h-[700px] bg-radial-[at_center] from-[var(--brand-blue-deeper)]/[0.03] to-transparent rounded-full" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 sm:pt-20 lg:pt-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-24 items-center">
           {/* Left - 3D Globe + Floating badges */}
           <AnimatedSection direction="left">
             <div className="relative">
@@ -140,11 +140,11 @@ export default function About() {
               </svg>
               Hakkımızda
             </span>
-            <h2 className="font-[var(--font-syne)] text-4xl md:text-5xl font-extrabold leading-tight tracking-tight mb-6">
+            <h2 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight mb-4 sm:mb-6">
               Türkiye&apos;nin Öncü{" "}
               <span className="gradient-text">Teknoloji Servisi</span>
             </h2>
-            <p className="text-lg text-[var(--text-secondary)] leading-relaxed mb-4">
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed mb-4">
               EphorTech, 30 yılı aşkın sektör deneyimiyle Türkiye&apos;nin öncü
               teknoloji servis sağlayıcılarından biridir. Klasik teknik servis
               anlayışını modern çözümlerle yeniden tanımlıyoruz.
@@ -164,14 +164,14 @@ export default function About() {
               </svg>
             </Link>
 
-            <div ref={featRef} className="grid grid-cols-2 gap-4">
+            <div ref={featRef} className="grid grid-cols-2 gap-3 sm:gap-4">
               {features.map((feat, i) => (
                 <motion.div
                   key={feat.title}
                   initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
                   animate={featInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
                   transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                  className="group p-4 rounded-xl bg-[var(--bg-card)] border border-white/[0.04] hover:border-[var(--brand-blue)]/20 hover:bg-[var(--bg-card-hover)] transition-all duration-500 hover-lift"
+                  className="group p-3 sm:p-4 rounded-xl bg-[var(--bg-card)] border border-white/[0.04] hover:border-[var(--brand-blue)]/20 hover:bg-[var(--bg-card-hover)] transition-all duration-500 hover-lift"
                 >
                   <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${feat.color} border ${feat.borderColor} flex items-center justify-center ${feat.iconColor} mb-3 group-hover:scale-110 transition-transform duration-500`}>
                     {feat.icon}
