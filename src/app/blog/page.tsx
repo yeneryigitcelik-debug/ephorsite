@@ -91,9 +91,9 @@ export default function BlogPage() {
       <WhatsAppButton />
       <main>
         {/* Hero */}
-        <section className="relative pt-32 pb-20 overflow-hidden">
+        <section className="relative pt-28 sm:pt-32 pb-16 sm:pb-20 overflow-hidden">
           <div className="hero-gradient" />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection className="text-center">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--brand-blue)]/15 bg-[var(--brand-blue)]/[0.06] text-sm font-medium text-[var(--brand-blue-light)] mb-6">
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -101,7 +101,7 @@ export default function BlogPage() {
                 </svg>
                 Blog
               </span>
-              <h1 className="font-[var(--font-syne)] text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
+              <h1 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
                 Güncel{" "}
                 <span className="gradient-text">Blog Yazıları</span>
               </h1>
@@ -115,7 +115,7 @@ export default function BlogPage() {
         {/* Featured Post */}
         {featured && (
           <section className="relative pb-16">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <AnimatedSection>
                 <Link href={`/blog/${featured.slug}`}>
                   <motion.article
@@ -153,8 +153,8 @@ export default function BlogPage() {
         )}
 
         {/* Post Grid */}
-        <section className="relative pb-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <section className="relative pb-20 sm:pb-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {rest.map((post, i) => (
                 <AnimatedSection key={post.slug} delay={i * 0.08}>

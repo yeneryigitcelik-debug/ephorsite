@@ -144,6 +144,13 @@ export default function ParticleNetwork() {
   const [canRender, setCanRender] = useState(false);
 
   useEffect(() => {
+    // Disable on mobile/tablet devices and when reduced motion is preferred
+    const isMobile = window.innerWidth < 1024 || "ontouchstart" in window;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isMobile || prefersReducedMotion) {
+      setCanRender(false);
+      return;
+    }
     const canvas = document.createElement("canvas");
     const gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
     setCanRender(!!gl);

@@ -53,7 +53,7 @@ function Counter({ value }: { value: string }) {
   }, [inView, value, numericPart, prefix, suffix]);
 
   return (
-    <span ref={ref} className="font-[var(--font-syne)] text-4xl md:text-5xl font-extrabold gradient-text">
+    <span ref={ref} className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-5xl font-extrabold gradient-text">
       {display}
     </span>
   );
@@ -93,12 +93,12 @@ export default function ServicePageTemplate({
             <motion.div
               animate={{ x: [0, 30, -20, 0], y: [0, -40, 20, 0], scale: [1, 1.2, 0.9, 1] }}
               transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-              className={`absolute top-[15%] right-[20%] w-[400px] h-[400px] rounded-full bg-gradient-to-br ${gradient} opacity-[0.04] blur-[100px]`}
+              className={`absolute top-[15%] right-[20%] w-[200px] sm:w-[300px] lg:w-[400px] h-[200px] sm:h-[300px] lg:h-[400px] rounded-full bg-gradient-to-br ${gradient} opacity-[0.04] blur-[100px]`}
             />
             <motion.div
               animate={{ x: [0, -25, 15, 0], y: [0, 30, -25, 0], scale: [1, 0.85, 1.15, 1] }}
               transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute bottom-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-[var(--brand-blue)]/[0.03] blur-[80px]"
+              className="absolute bottom-[20%] left-[10%] w-[180px] sm:w-[250px] lg:w-[350px] h-[180px] sm:h-[250px] lg:h-[350px] rounded-full bg-[var(--brand-blue)]/[0.03] blur-[80px]"
             />
             <motion.div
               animate={{ x: [0, 20, -30, 0], y: [0, -20, 35, 0] }}
@@ -200,7 +200,7 @@ export default function ServicePageTemplate({
           {/* Decorative line */}
           <div className="absolute left-12 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--brand-blue)]/10 to-transparent hidden lg:block z-[2]" />
 
-          <motion.div style={{ opacity: heroOpacity }} className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-40 pb-24 w-full">
+          <motion.div style={{ opacity: heroOpacity }} className="relative z-10 mx-auto max-w-7xl px-4 sm:px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-24 w-full">
             {/* Breadcrumb */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -230,7 +230,7 @@ export default function ServicePageTemplate({
             </motion.span>
 
             {/* Title */}
-            <h1 className="font-[var(--font-syne)] text-5xl md:text-6xl lg:text-8xl font-extrabold tracking-tight mb-8 max-w-4xl">
+            <h1 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-extrabold tracking-tight mb-8 max-w-4xl">
               <TextReveal delay={0.2}>
                 {title.split(" ").slice(0, -1).join(" ")}
               </TextReveal>{" "}
@@ -244,7 +244,7 @@ export default function ServicePageTemplate({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.7 }}
-              className="max-w-2xl text-xl text-[var(--text-secondary)] leading-relaxed"
+              className="max-w-2xl text-base sm:text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed"
             >
               {description}
             </motion.p>
@@ -303,7 +303,7 @@ export default function ServicePageTemplate({
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-blue)]/30 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--brand-blue)]/10 to-transparent" />
 
-          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
               {stats.map((stat, i) => (
                 <AnimatedSection key={stat.label} delay={i * 0.12} className="relative text-center group">
@@ -324,8 +324,8 @@ export default function ServicePageTemplate({
         </section>
 
         {/* ===== DETAILED DESCRIPTION WITH SIDE IMAGE ===== */}
-        <section className="py-32 overflow-hidden">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <section className="py-16 sm:py-24 lg:py-32 overflow-hidden">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
               {/* Left text - 5 cols */}
               <AnimatedSection direction="left" className="lg:col-span-5">
@@ -422,7 +422,7 @@ export default function ServicePageTemplate({
 
         {/* ===== PROCESS / HOW IT WORKS ===== */}
         <section className="py-24 bg-[var(--bg-secondary)] overflow-hidden">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection className="text-center mb-16">
               <span className="inline-block px-4 py-1.5 rounded-full border border-[var(--brand-blue)]/20 bg-[var(--brand-blue)]/5 text-sm font-medium text-[var(--brand-blue-light)] mb-6">
                 Süreç
@@ -469,13 +469,13 @@ export default function ServicePageTemplate({
         </section>
 
         {/* ===== CTA ===== */}
-        <section className="relative py-32 overflow-hidden">
+        <section className="relative py-16 sm:py-24 lg:py-32 overflow-hidden">
           {/* Background decoration */}
           <div className="absolute inset-0 bg-radial-[at_center] from-[var(--brand-blue)]/[0.04] to-transparent" />
 
-          <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-8 text-center">
+          <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection>
-              <div className="relative gradient-border p-12 md:p-16 rounded-3xl overflow-hidden">
+              <div className="relative gradient-border p-6 sm:p-10 md:p-16 rounded-3xl overflow-hidden">
                 {/* Inner glow */}
                 <div className={`absolute -top-20 -right-20 w-60 h-60 bg-gradient-to-br ${gradient} opacity-[0.06] rounded-full blur-3xl`} />
                 <div className={`absolute -bottom-20 -left-20 w-60 h-60 bg-gradient-to-br ${gradient} opacity-[0.04] rounded-full blur-3xl`} />

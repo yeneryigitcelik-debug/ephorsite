@@ -112,7 +112,7 @@ export default function Services() {
                       alt={service.title}
                       width={600}
                       height={400}
-                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 image-enhance"
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                       quality={85}
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
@@ -131,7 +131,7 @@ export default function Services() {
                   </div>
 
                   {/* Content area */}
-                  <div className="p-4 pt-4 sm:p-6 sm:pt-5 flex flex-col flex-1">
+                  <div className="relative -mt-px p-4 pt-4 sm:p-6 sm:pt-5 flex flex-col flex-1 bg-[linear-gradient(145deg,rgba(17,23,34,0.9),rgba(12,16,24,0.95))]">
                     {/* Icon + Title */}
                     <div className="flex items-center gap-3 mb-3">
                       <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center text-white/90 opacity-70 group-hover:opacity-100 transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-[var(--brand-blue)]/20`}>

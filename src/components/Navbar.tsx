@@ -138,7 +138,9 @@ export default function Navbar() {
             {/* Mobile Toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden relative w-8 h-8 flex items-center justify-center"
+              className="lg:hidden relative w-10 h-10 flex items-center justify-center -mr-1"
+              aria-label={mobileOpen ? "Menüyü kapat" : "Menüyü aç"}
+              aria-expanded={mobileOpen}
             >
               <div className="flex flex-col gap-1.5">
                 <motion.span

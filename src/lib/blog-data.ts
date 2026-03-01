@@ -1,0 +1,166 @@
+export interface BlogPost {
+  slug: string;
+  title: string;
+  category: string;
+  date: string;
+  readTime: string;
+  excerpt: string;
+  content: string[];
+}
+
+export const posts: Record<string, BlogPost> = {
+  "sigorta-kapsaminda-cihaz-onarim-sureci": {
+    slug: "sigorta-kapsaminda-cihaz-onarim-sureci",
+    title: "Sigorta Kapsamında Cihaz Onarım Süreci Nasıl İşler?",
+    category: "Sigorta",
+    date: "20 Şub 2026",
+    readTime: "5 dk",
+    excerpt: "Sigorta poliçeniz kapsamında cihazınız arızalandığında yapmanız gereken adımları ve sürecin nasıl işlediğini detaylı olarak anlattık.",
+    content: [
+      "Sigorta poliçeniz kapsamında elektronik cihazlarınız arızalandığında, onarım sürecinin nasıl işlediğini bilmek hem zamandan tasarruf etmenizi hem de haklarınızı korumanızı sağlar. EphorTech olarak 30 yılı aşkın deneyimimizle bu süreci sizin için en kolay hale getiriyoruz.",
+      "## Adım 1: Hasar Bildirimi",
+      "Cihazınızda bir arıza veya hasar meydana geldiğinde ilk yapmanız gereken sigorta firmanıza hasar bildirimi yapmaktır. Bu bildirimi sigorta firmanızın çağrı merkezi, web sitesi veya mobil uygulaması üzerinden gerçekleştirebilirsiniz. Bildirimin ardından dosyanız oluşturulur ve EphorTech'e yönlendirilir.",
+      "## Adım 2: EphorTech İletişimi",
+      "Dosyanız bize ulaştıktan sonra çağrı merkezimiz sizinle iletişime geçer. Bu görüşmede arızanın detayları, cihaz bilgileri ve size en uygun servis noktası belirlenir. Türkiye genelinde 81 ilde bulunan 1.000'e yakın servis noktamız sayesinde size en yakın lokasyondan hizmet sunulur.",
+      "## Adım 3: Cihaz Teslimi ve Ekspertiz",
+      "Cihazınızı belirlenen servis noktasına teslim ettiğinizde, uzman teknisyenlerimiz detaylı bir ekspertiz raporu hazırlar. Bu raporda arızanın nedeni, onarım için gereken parçalar ve tahmini süre yer alır. Rapor sigorta firmasına iletilir ve onay süreci başlar.",
+      "## Adım 4: Onarım Süreci",
+      "Sigorta firmasından onay alındıktan sonra onarım süreci başlar. EphorTech'in profesyonel yazılım altyapısı sayesinde onarımın her aşamasını anlık olarak takip edebilirsiniz. Çağrı merkezimizi arayarak veya sigorta firmanız üzerinden süreciniz hakkında bilgi alabilirsiniz.",
+      "## Adım 5: Teslim ve Garanti",
+      "Onarım tamamlandığında cihazınız test edilir ve size teslim edilir. EphorTech olarak tüm onarımlarımıza 1 yıl garanti veriyoruz. Bu garanti süresinde aynı arızanın tekrarlanması durumunda ücretsiz onarım hizmeti sunulmaktadır.",
+      "## Poliçe Kapsamında Nelere Dikkat Etmelisiniz?",
+      "Sigorta poliçenizin kapsamını iyi bilmeniz önemlidir. Poliçe türüne göre kapsanan cihazlar, hasar türleri ve teminat limitleri farklılık gösterebilir. Düşme, kırılma, su hasarı ve elektrik arızası gibi durumlar genellikle poliçe kapsamında yer alır, ancak kasıtlı hasar ve kozmetik sorunlar kapsam dışı kalabilir.",
+      "EphorTech olarak 50'den fazla sigorta firmasıyla entegre çalışıyoruz ve sürecin her aşamasında yanınızdayız. Sorularınız için 0850 335 0860 numaralı çağrı merkezimizden bize ulaşabilirsiniz.",
+    ],
+  },
+  "beyaz-esya-bakim-rehberi": {
+    slug: "beyaz-esya-bakim-rehberi",
+    title: "Beyaz Eşyalarınızın Ömrünü Uzatmanın 10 Yolu",
+    category: "Bakım Rehberi",
+    date: "15 Şub 2026",
+    readTime: "4 dk",
+    excerpt: "Düzenli bakım ve doğru kullanım ile beyaz eşyalarınızın ömrünü yıllar boyunca uzatabilirsiniz. İşte uzmanlarımızdan ipuçları.",
+    content: [
+      "Beyaz eşyalar evlerimizin vazgeçilmez parçalarıdır ve doğru bakım ile ömürleri yıllar boyunca uzatılabilir. EphorTech uzmanlarının önerileriyle cihazlarınızı en verimli şekilde kullanabilirsiniz.",
+      "## 1. Buzdolabınızı Düzenli Temizleyin",
+      "Buzdolabınızın arka tarafındaki kondenser bobinlerini yılda en az iki kez temizleyin. Toz biriken bobinler, buzdolabının daha fazla enerji harcamasına ve motorun aşırı çalışmasına neden olur. Ayrıca iç kısımda biriken buzları düzenli olarak çözün.",
+      "## 2. Çamaşır Makinesinin Lastiklerini Kontrol Edin",
+      "Kapak lastiği zamanla kirlenir ve küf oluşabilir. Her yıkama sonrası kapağı açık bırakarak hava sirkülasyonu sağlayın. Ayda bir kez boş yıkama ile sirke veya özel temizleyici kullanarak lastiği ve tamburu temizleyin.",
+      "## 3. Bulaşık Makinesi Filtresini Ayda Bir Temizleyin",
+      "Bulaşık makinesinin alt kısmındaki filtrede yemek artıkları birikir. Bu durum hem koku yapar hem de makinenin verimini düşürür. Filtreyi ayda bir çıkarıp sıcak su ve sabunla yıkayın.",
+      "## 4. Fırınınızın Kapak Contasını İhmal Etmeyin",
+      "Fırın kapağının contası zamanla sertleşir ve ısı kaçağına neden olur. Contayı düzenli olarak nemli bezle silin ve çatlak oluşup oluşmadığını kontrol edin. Hasarlı contaları değiştirmek enerji tasarrufu sağlar.",
+      "## 5. Klima Filtrelerini Mevsimlik Değiştirin",
+      "Klima filtreleri her sezon başında temizlenmeli veya değiştirilmelidir. Kirli filtreler hem enerji tüketimini artırır hem de sağlığa zararlı partikülleri havaya yayar.",
+      "## 6. Elektrikli Süpürgenin Filtresini Yıkayın",
+      "HEPA filtreli süpürgelerin filtresini ayda bir yıkayıp kurutarak kullanın. Tıkanan filtre emme gücünü düşürür ve motora zarar verir.",
+      "## 7. Çamaşır Kurutma Makinesinin Tüy Filtresini Her Kullanımda Temizleyin",
+      "Kurutma makinesinin tüy filtresi her kullanımdan sonra temizlenmelidir. Biriken tüyler hava akışını engeller ve yangın riski oluşturabilir.",
+      "## 8. Su Arıtma Cihazı Filtrelerini Zamanında Değiştirin",
+      "Su arıtma cihazlarının filtre değişim sürelerine mutlaka uyun. Süresi geçmiş filtreler suyun kalitesini düşürür ve cihaza zarar verebilir.",
+      "## 9. Ankastre Cihazlarda Havalandırma Boşluğu Bırakın",
+      "Ankastre cihazların etrafında yeterli havalandırma boşluğu olduğundan emin olun. Sıkışık yerleşim, cihazların aşırı ısınmasına ve erken arızalanmasına yol açar.",
+      "## 10. Profesyonel Bakım Yaptırın",
+      "Yılda bir kez EphorTech yetkili servislerinden profesyonel bakım hizmeti alın. Uzman teknisyenler gözle görülemeyen sorunları tespit ederek büyük arızaların önüne geçer. Bakım hizmetlerimiz hakkında bilgi almak için 0850 335 0860'ı arayabilirsiniz.",
+    ],
+  },
+  "kurumsal-cihaz-yonetimi": {
+    slug: "kurumsal-cihaz-yonetimi",
+    title: "Kurumsal Firmalar İçin Cihaz Yönetimi Çözümleri",
+    category: "Kurumsal",
+    date: "8 Şub 2026",
+    readTime: "6 dk",
+    excerpt: "Büyük ölçekli firmalarda cihaz parkının yönetimi, bakım planlaması ve maliyet optimizasyonu için profesyonel öneriler.",
+    content: [
+      "Büyük ölçekli firmalarda yüzlerce, hatta binlerce elektronik cihazın yönetimi ciddi bir operasyonel zorluk oluşturur. EphorTech, kurumsal firmalar için özel geliştirdiği çözümlerle bu süreci kolaylaştırır.",
+      "## Kurumsal Cihaz Parkı Yönetiminde Karşılaşılan Zorluklar",
+      "Ofis ekipmanları, bilgisayarlar, yazıcılar, klimalar ve diğer elektronik cihazlar düzenli bakım ve onarım gerektirir. Birden fazla lokasyonda faaliyet gösteren firmalar için bu süreç çok daha karmaşık hale gelir. Farklı tedarikçilerle çalışmak, garanti takibi ve maliyet kontrolü gibi konular önemli sorunlar yaratır.",
+      "## EphorTech Kurumsal Çözümleri",
+      "EphorTech olarak 200'den fazla kurumsal müşterimize sunduğumuz çözümler şunlardır:",
+      "**Tek Noktadan Yönetim:** Tüm cihazlarınızın bakım, onarım ve garanti süreçlerini tek bir platform üzerinden yönetin. Özel geliştirdiğimiz yazılım altyapısıyla her cihazın durumunu anlık takip edebilirsiniz.",
+      "**SLA (Hizmet Seviyesi Anlaşması):** Firmanızın ihtiyaçlarına özel SLA anlaşmaları hazırlıyoruz. Belirlenen müdahale süreleri, öncelik seviyeleri ve raporlama standartları ile hizmet kalitemizi garanti altına alıyoruz.",
+      "**Öncelikli Servis:** Kurumsal müşterilerimize öncelikli servis hizmeti sunuyoruz. Kritik cihaz arızalarında en kısa sürede müdahale ederek iş sürekliliğinizi koruyoruz.",
+      "## Maliyet Optimizasyonu",
+      "Kurumsal müşterilerimize sunduğumuz toplu bakım paketleri ile cihaz başına maliyeti önemli ölçüde düşürüyoruz. Düzenli bakım programları sayesinde büyük arızaların önüne geçerek uzun vadede tasarruf sağlıyoruz. Detaylı maliyet raporlarıyla IT bütçenizi daha verimli yönetmenize yardımcı oluyoruz.",
+      "## Raporlama ve Analiz",
+      "Özel raporlama panelimizle cihaz bazında arıza istatistikleri, ortalama onarım süreleri, maliyet analizleri ve garanti takibi gibi verilere kolayca ulaşabilirsiniz. Bu veriler yeni cihaz alım kararlarınızda da size rehberlik eder.",
+      "Kurumsal çözümlerimiz hakkında detaylı bilgi almak ve firmanıza özel teklif hazırlatmak için 0850 335 0860 numaralı hattımızdan bize ulaşabilirsiniz.",
+    ],
+  },
+  "garanti-sureci-rehberi": {
+    slug: "garanti-sureci-rehberi",
+    title: "Garanti Süreci Hakkında Bilmeniz Gereken Her Şey",
+    category: "Rehber",
+    date: "1 Şub 2026",
+    readTime: "3 dk",
+    excerpt: "EphorTech'in 1 yıllık onarım garantisi kapsamında haklarınız, süreç takibi ve garanti sonrası destek hakkında bilgiler.",
+    content: [
+      "EphorTech olarak yaptığımız her onarıma 1 yıl garanti veriyoruz. Bu yazıda garanti süreciniz hakkında bilmeniz gereken her şeyi açıklıyoruz.",
+      "## 1 Yıl Onarım Garantisi Nedir?",
+      "EphorTech tarafından gerçekleştirilen her onarım işlemi, teslim tarihinden itibaren 1 yıl süreyle garanti kapsamındadır. Bu garanti, onarım yapılan arızanın tekrarlanması durumunda ücretsiz olarak yeniden onarım yapılacağını taahhüt eder.",
+      "## Garanti Kapsamına Neler Girer?",
+      "Garanti kapsamında değerlendirilen durumlar şunlardır: Onarım yapılan arızanın aynı sebepten tekrarlanması, değiştirilen parçanın fabrikasyon hatası nedeniyle arızalanması ve onarım sırasında yapılan işlemin kalite standardına uygun olmaması durumları garanti kapsamındadır.",
+      "## Garanti Dışı Durumlar",
+      "Şu durumlar garanti kapsamı dışında kalır: Kullanıcı hatası veya fiziksel darbe sonucu oluşan arızalar, onarım yapılan kısım dışındaki farklı bir arıza, cihaz üzerinde yetkisiz müdahale yapılması ve doğal afet, su baskını veya yıldırım gibi doğal sebeplerden kaynaklanan hasarlar.",
+      "## Garanti Süreciniz Nasıl İşler?",
+      "Garanti kapsamında bir sorun yaşamanız durumunda 0850 335 0860 numaralı çağrı merkezimizi aramanız yeterlidir. Onarım dosya numaranız ve garanti belgenizle başvurunuzu yapabilirsiniz. Teknik ekibimiz durumu değerlendirip garanti kapsamında olup olmadığını belirler ve uygunsa ücretsiz onarım süreci başlatılır.",
+      "## Garanti Belgenizi Saklayın",
+      "Onarım sonrası size verilen garanti belgesi ve onarım raporu önemli belgelerdir. Bu belgeleri 1 yıl boyunca saklamanızı öneriyoruz. Garanti başvurularında bu belgeler sürecinizi hızlandıracaktır.",
+      "Garanti sürecinizle ilgili tüm sorularınız için çağrı merkezimiz hafta içi 08:30-18:00 saatleri arasında hizmetinizdedir.",
+    ],
+  },
+  "konut-projesi-teknik-servis": {
+    slug: "konut-projesi-teknik-servis",
+    title: "Konut Projelerinde Teknik Servis Hizmetlerinin Önemi",
+    category: "Konut Projeleri",
+    date: "25 Oca 2026",
+    readTime: "5 dk",
+    excerpt: "Yeni konut projelerinde anahtar teslim cihaz kurulumundan kampanya paketlerine kadar teknik servis hizmetlerinin rolü.",
+    content: [
+      "Yeni konut projeleri teslim edildiğinde, dairelerdeki beyaz eşya ve elektronik cihazların kurulumu, garanti yönetimi ve satış sonrası destek kritik süreçlerdir. EphorTech, konut projeleri için uçtan uca teknik servis çözümleri sunmaktadır.",
+      "## Konut Projelerinde Teknik Servisin Rolü",
+      "Müteahhit firmalar ve konut projeleri geliştiricileri, satış sürecinde alıcılara sundukları beyaz eşya paketlerinin sorunsuz kurulumunu ve sonrasında kaliteli servis desteğini garanti etmek ister. Bu noktada EphorTech devreye girerek tüm süreci profesyonel şekilde yönetir.",
+      "## Anahtar Teslim Kurulum Hizmeti",
+      "EphorTech, konut projelerinde toplu cihaz kurulumu gerçekleştirir. Buzdolabı, çamaşır makinesi, bulaşık makinesi, fırın, kombi ve klima gibi tüm beyaz eşyaların montajı uzman ekiplerimiz tarafından yapılır. Her daire için kurulum raporu hazırlanır ve cihazlar test edilir.",
+      "## Kampanya Paketleri",
+      "Konut projeleri için özel kampanya paketleri sunuyoruz. Bu paketler toplu alım avantajı ile uygun fiyatlı cihaz tedariği, profesyonel kurulum hizmeti, uzatılmış garanti seçenekleri ve satış sonrası teknik destek gibi kapsamlı çözümler içerir.",
+      "## Satış Sonrası Destek",
+      "Konut sakinleri için özel bir destek hattı oluşturuyoruz. Daire sahibi herhangi bir cihaz arızası yaşadığında tek bir numaradan bize ulaşabilir. 81 ildeki servis ağımızla en kısa sürede müdahale ederiz.",
+      "## Müteahhit Firma Avantajları",
+      "Konut projelerinde EphorTech ile çalışmanın müteahhit firmalar için pek çok avantajı vardır. Tek muhatap olarak tüm cihaz süreçlerinin yönetimi, toplu fiyat avantajı, proje bazlı özel raporlama ve müşteri memnuniyetinin artması bunlardan bazılarıdır.",
+      "150'den fazla konut projesinde hizmet vermiş deneyimimizle projenize değer katmak istiyoruz. Detaylı bilgi ve teklif için 0850 335 0860 numarasından bize ulaşın.",
+    ],
+  },
+  "cagri-merkezi-hizmetleri": {
+    slug: "cagri-merkezi-hizmetleri",
+    title: "7/24 Çağrı Merkezi ile Müşteri Deneyimini İyileştirme",
+    category: "Hizmetler",
+    date: "18 Oca 2026",
+    readTime: "4 dk",
+    excerpt: "Profesyonel çağrı merkezi desteğinin müşteri memnuniyetine etkisi ve EphorTech'in çağrı merkezi altyapısı hakkında.",
+    content: [
+      "Teknik servis hizmetlerinde müşteri deneyiminin en kritik noktası iletişimdir. EphorTech'in profesyonel çağrı merkezi altyapısı, müşterilerinizle olan iletişimi en üst düzeye taşır.",
+      "## Çağrı Merkezi Hizmetlerimiz",
+      "EphorTech çağrı merkezi, sigorta firmaları ve kurumsal müşterilerimiz adına hasar ihbar kabul, arıza bildirim yönetimi, süreç takip ve bilgilendirme ile müşteri memnuniyet aramaları gibi hizmetler sunmaktadır.",
+      "## Profesyonel Ekip",
+      "Çağrı merkezi ekibimiz, teknik servis süreçleri konusunda eğitimli ve deneyimli personelden oluşur. Müşterilerinize sadece bilgi vermekle kalmaz, aynı zamanda teknik yönlendirme de yapabilirler. Bu sayede ilk aramada çözüm oranımız sektör ortalamasının üzerindedir.",
+      "## Entegre Yazılım Altyapısı",
+      "Çağrı merkezi altyapımız, servis yönetim yazılımımızla tam entegredir. Bu sayede çağrı merkezi temsilcimiz, arayan müşterinin dosya durumunu, cihaz bilgilerini ve geçmiş işlemlerini anında görebilir. Müşterinin kendini tekrar etmesine gerek kalmaz.",
+      "## Raporlama ve Kalite Kontrol",
+      "Tüm çağrılar kayıt altına alınır ve düzenli kalite kontrol değerlendirmelerine tabi tutulur. Müşterilerimize sunduğumuz raporlarda çağrı sayıları, ortalama bekleme süreleri, ilk çağrıda çözüm oranları ve müşteri memnuniyet skorları yer alır.",
+      "## Sigorta Firmaları İçin Özel Çözümler",
+      "Sigorta firmaları için özel olarak tasarlanmış çağrı merkezi süreçlerimiz bulunmaktadır. Hasar ihbar kabulünden dosya açılışına, ekspertiz koordinasyonundan onarım takibine kadar tüm süreçler entegre şekilde yönetilir.",
+      "## Maliyet Avantajı",
+      "Kendi çağrı merkezinizi kurmak ve yönetmek yerine EphorTech'in hazır altyapısını kullanarak hem maliyetlerinizi düşürebilir hem de profesyonel bir hizmet sunabilirsiniz. Çağrı hacminize göre esnek fiyatlandırma modelleri sunuyoruz.",
+      "Çağrı merkezi hizmetlerimiz hakkında detaylı bilgi almak için 0850 335 0860'ı arayabilir veya info@ephortech.com adresine e-posta gönderebilirsiniz.",
+    ],
+  },
+};
+
+export function getPost(slug: string): BlogPost | undefined {
+  return posts[slug];
+}
+
+export function getAllSlugs(): string[] {
+  return Object.keys(posts);
+}

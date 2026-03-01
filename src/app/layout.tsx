@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Syne, Outfit } from "next/font/google";
 import "./globals.css";
+import CookieConsent from "@/components/CookieConsent";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -92,6 +93,13 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
   manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#6B9FCA",
 };
 
 const jsonLd = {
@@ -191,6 +199,7 @@ export default function RootLayout({
         className={`${syne.variable} ${outfit.variable} antialiased grain`}
       >
         {children}
+        <CookieConsent />
       </body>
     </html>
   );

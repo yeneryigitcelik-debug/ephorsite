@@ -97,6 +97,12 @@ export default function ContactEnvelope3D() {
   const [canRender, setCanRender] = useState(false);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768 || "ontouchstart" in window;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isMobile || prefersReducedMotion) {
+      setCanRender(false);
+      return;
+    }
     const canvas = document.createElement("canvas");
     const gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
     setCanRender(!!gl);

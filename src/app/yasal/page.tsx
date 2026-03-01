@@ -38,7 +38,7 @@ export default function Yasal() {
         {/* Hero */}
         <section className="relative min-h-[60vh] flex items-center overflow-hidden">
           <div className="hero-gradient" />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-16">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -47,13 +47,13 @@ export default function Yasal() {
               <span className="inline-block px-4 py-1.5 rounded-full border border-[var(--brand-blue)]/20 bg-[var(--brand-blue)]/5 text-sm font-medium text-[var(--brand-blue-light)] mb-6">
                 Yasal Bilgiler
               </span>
-              <h1 className="font-[var(--font-syne)] text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl">
+              <h1 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight max-w-4xl">
                 <TextReveal>Yasal</TextReveal>{" "}
                 <TextReveal delay={0.2}>
                   <span className="gradient-text">Bilgiler</span>
                 </TextReveal>
               </h1>
-              <p className="mt-6 text-lg text-[var(--text-secondary)] max-w-2xl">
+              <p className="mt-4 sm:mt-6 text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl">
                 EphorTech olarak kişisel verilerinizin korunmasına büyük önem veriyoruz. Bu sayfada gizlilik politikamız, çerez politikamız ve KVKK kapsamındaki haklarınız hakkında bilgi bulabilirsiniz.
               </p>
             </motion.div>
@@ -62,7 +62,7 @@ export default function Yasal() {
 
         {/* Tab Navigation */}
         <section className="sticky top-0 z-30 bg-[var(--bg-primary)]/80 backdrop-blur-xl border-b border-white/[0.06]">
-          <div className="mx-auto max-w-4xl px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <div className="flex gap-1 py-3 overflow-x-auto">
               {sections.map((s) => (
                 <button

@@ -54,7 +54,7 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
           className="w-full flex items-center justify-between gap-3 sm:gap-4 p-4 sm:p-6 md:p-8 text-left cursor-pointer"
         >
           <div className="flex items-center gap-4">
-            <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--brand-blue)]/10 to-[var(--brand-blue-dark)]/10 border border-[var(--brand-blue)]/20 flex items-center justify-center text-xs font-bold text-[var(--brand-blue)]">
+            <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--brand-blue)]/10 to-[var(--brand-blue-dark)]/10 border border-[var(--brand-blue)]/20 hidden sm:flex items-center justify-center text-xs font-bold text-[var(--brand-blue)]">
               {String(index + 1).padStart(2, "0")}
             </span>
             <h3 className="font-[var(--font-syne)] text-base md:text-lg font-bold text-white group-hover:text-[var(--brand-blue-light)] transition-colors duration-300">
@@ -81,7 +81,7 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden"
             >
-              <div className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6 md:pb-8 pl-4 sm:pl-[4.5rem] md:pl-[5.5rem]">
+              <div className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6 md:pb-8 sm:pl-[4.5rem] md:pl-[5.5rem]">
                 <p className="text-[var(--text-secondary)] leading-relaxed">
                   {faq.answer}
                 </p>

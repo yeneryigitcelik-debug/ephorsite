@@ -69,7 +69,7 @@ export default function Iletisim() {
         {/* Hero */}
         <section className="relative min-h-[50vh] flex items-center overflow-hidden">
           <div className="hero-gradient" />
-          <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-32 pb-16">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -78,7 +78,7 @@ export default function Iletisim() {
               <span className="inline-block px-4 py-1.5 rounded-full border border-[var(--brand-blue)]/20 bg-[var(--brand-blue)]/5 text-sm font-medium text-[var(--brand-blue-light)] mb-6">
                 İletişim
               </span>
-              <h1 className="font-[var(--font-syne)] text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
+              <h1 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight">
                 <TextReveal>İletişim</TextReveal>{" "}
                 <TextReveal delay={0.2}>
                   <span className="gradient-text">Bilgilerimiz</span>
@@ -88,7 +88,7 @@ export default function Iletisim() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
-                className="mt-6 max-w-xl text-xl text-[var(--text-secondary)]"
+                className="mt-4 sm:mt-6 max-w-xl text-base sm:text-lg md:text-xl text-[var(--text-secondary)]"
               >
                 Size en uygun çözümü sunmak için hazırız.
               </motion.p>
@@ -97,11 +97,11 @@ export default function Iletisim() {
         </section>
 
         {/* Content */}
-        <section className="py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+        <section className="py-12 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
               {/* Form */}
-              <AnimatedSection delay={0.1} className="lg:col-span-3 gradient-border p-8 md:p-10 rounded-2xl">
+              <AnimatedSection delay={0.1} className="lg:col-span-3 gradient-border p-5 sm:p-8 md:p-10 rounded-2xl">
                 <h2 className="font-[var(--font-syne)] text-2xl font-bold mb-8">Mesaj Gönderin</h2>
                 <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -156,8 +156,8 @@ export default function Iletisim() {
           </div>
         </section>
         {/* Ofis Görselleri */}
-        <section className="py-16">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <section className="py-12 sm:py-16">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <AnimatedSection delay={0.1}>
                 <div className="relative rounded-2xl overflow-hidden group">

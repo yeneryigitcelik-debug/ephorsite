@@ -201,7 +201,7 @@ export default function Hero() {
       {/* === CONTENT === */}
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 pt-[85px] lg:pt-[5px] pb-20 w-full"
+        className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-[85px] lg:pt-[5px] pb-20 w-full"
       >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left content - spans 7 cols */}
@@ -374,7 +374,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.4 }}
-          className="mt-24"
+          className="mt-12 sm:mt-16 lg:mt-24"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[
@@ -405,21 +405,26 @@ export default function Hero() {
         </motion.div>
 
         {/* Mobile slide indicators */}
-        <div className="flex lg:hidden justify-center gap-2 mt-12">
+        <div className="flex lg:hidden justify-center gap-1 mt-12">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => goToSlide(i)}
-              className="relative h-1.5 rounded-full overflow-hidden transition-all duration-500"
-              style={{ width: i === current ? 48 : 16 }}
+              className="relative flex items-center justify-center py-5"
+              aria-label={`Slayt ${i + 1}`}
             >
-              <div className="absolute inset-0 bg-white/10 rounded-full" />
-              {i === current && (
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue)] to-[var(--brand-blue-light)] rounded-full"
-                  style={{ width: `${progress}%` }}
-                />
-              )}
+              <div
+                className="relative h-1.5 rounded-full overflow-hidden transition-all duration-500"
+                style={{ width: i === current ? 48 : 16 }}
+              >
+                <div className="absolute inset-0 bg-white/10 rounded-full" />
+                {i === current && (
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue)] to-[var(--brand-blue-light)] rounded-full"
+                    style={{ width: `${progress}%` }}
+                  />
+                )}
+              </div>
             </button>
           ))}
         </div>
