@@ -88,7 +88,7 @@ export default function Hakkimizda() {
               {[
                 { value: "30+", label: "Yıllık Deneyim" },
                 { value: "81", label: "İlde Hizmet" },
-                { value: "1.000+", label: "Yetkili Servis" },
+                { value: "500+", label: "Yetkili Servis" },
                 { value: "1 Yıl", label: "Garanti" },
               ].map((stat, i) => (
                 <AnimatedSection key={stat.label} delay={i * 0.12} className="text-center">

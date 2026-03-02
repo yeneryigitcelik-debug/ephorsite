@@ -294,7 +294,7 @@ function Globe({ isDragging, dragRotation, zoom }: {
   return (
     <group ref={ref}>
       <mesh>
-        <sphereGeometry args={[1.5, 64, 64]} />
+        <sphereGeometry args={[1.5, 32, 32]} />
         <meshStandardMaterial
           map={earthTexture}
           color="#b0d0f0"
@@ -412,8 +412,8 @@ function ZoomButtons({ zoom }: { zoom: React.RefObject<number> }) {
   return (
     <div style={{
       position: "absolute",
-      bottom: 24,
-      right: 24,
+      bottom: "calc(24px + env(safe-area-inset-bottom, 0px))",
+      right: "calc(24px + env(safe-area-inset-right, 0px))",
       display: "flex",
       flexDirection: "column",
       gap: 8,
@@ -426,7 +426,7 @@ function ZoomButtons({ zoom }: { zoom: React.RefObject<number> }) {
         {hintVisible && (
           <div style={{
             position: "absolute",
-            right: 46,
+            right: 54,
             top: "50%",
             transform: "translateY(-50%)",
             display: "flex",
@@ -437,7 +437,7 @@ function ZoomButtons({ zoom }: { zoom: React.RefObject<number> }) {
             animation: "hintPulse 2s ease-in-out infinite",
           }}>
             <span style={{
-              fontSize: 11,
+              fontSize: 13,
               fontWeight: 500,
               color: "#8BB8DA",
               background: "rgba(10, 25, 47, 0.8)",
@@ -458,8 +458,8 @@ function ZoomButtons({ zoom }: { zoom: React.RefObject<number> }) {
         <button
           onClick={handleZoomIn}
           style={{
-            width: 36,
-            height: 36,
+            width: 44,
+            height: 44,
             borderRadius: "50%",
             border: "1px solid rgba(139, 184, 218, 0.3)",
             background: "rgba(10, 25, 47, 0.7)",
@@ -479,8 +479,8 @@ function ZoomButtons({ zoom }: { zoom: React.RefObject<number> }) {
       <button
         onClick={handleZoomOut}
         style={{
-          width: 36,
-          height: 36,
+          width: 44,
+          height: 44,
           borderRadius: "50%",
           border: "1px solid rgba(139, 184, 218, 0.3)",
           background: "rgba(10, 25, 47, 0.7)",

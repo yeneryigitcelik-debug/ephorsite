@@ -172,7 +172,7 @@ export default function SigortaFirmalari() {
                   Servis Yönetim <span className="gradient-text">Hizmetleri</span>
                 </h2>
                 <p className="text-[var(--text-secondary)] leading-relaxed text-lg">
-                  Sigorta firmalarının müşterilerinin elektronik cihazlarında arıza/hasar durumunda EphorTech Teknoloji Servisi olarak anlaşmalı olduğumuz 1.000&apos;e yakın yetkili servislerimiz, EphorTech Teknoloji Servis merkezimizde ki teknik ekibimizle sahip olduğumuz özel servis yazılımımız ile profesyonel yönetimi yapılır.
+                  Sigorta firmalarının müşterilerinin elektronik cihazlarında arıza/hasar durumunda EphorTech Teknoloji Servisi olarak anlaşmalı olduğumuz 500&apos;e yakın yetkili servislerimiz, EphorTech Teknoloji Servis merkezimizde ki teknik ekibimizle sahip olduğumuz özel servis yazılımımız ile profesyonel yönetimi yapılır.
                 </p>
               </AnimatedSection>
 

@@ -14,6 +14,13 @@ const OrbitingParticles = forwardRef<THREE.Points, { positions: Float32Array }>(
       }
     }, [positions]);
 
+    // Dispose geometry on unmount
+    useEffect(() => {
+      return () => {
+        geoRef.current?.dispose();
+      };
+    }, []);
+
     return (
       <points ref={ref}>
         <bufferGeometry ref={geoRef} />
@@ -85,6 +92,12 @@ export default function GlowingRing() {
   const [canRender, setCanRender] = useState(false);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768 || "ontouchstart" in window;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isMobile || prefersReducedMotion) {
+      setCanRender(false);
+      return;
+    }
     const canvas = document.createElement("canvas");
     const gl = canvas.getContext("webgl2") || canvas.getContext("webgl");
     setCanRender(!!gl);

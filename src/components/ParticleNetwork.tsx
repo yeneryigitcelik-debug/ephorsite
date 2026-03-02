@@ -45,6 +45,13 @@ function Particles() {
     return geo;
   }, []);
 
+  // Dispose geometry on unmount
+  useEffect(() => {
+    return () => {
+      lineGeometry.dispose();
+    };
+  }, [lineGeometry]);
+
   useEffect(() => {
     const handleMove = (e: MouseEvent) => {
       mouseRef.current.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -144,7 +151,6 @@ export default function ParticleNetwork() {
   const [canRender, setCanRender] = useState(false);
 
   useEffect(() => {
-    // Disable on mobile/tablet devices and when reduced motion is preferred
     const isMobile = window.innerWidth < 1024 || "ontouchstart" in window;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (isMobile || prefersReducedMotion) {

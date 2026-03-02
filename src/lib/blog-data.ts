@@ -21,7 +21,7 @@ export const posts: Record<string, BlogPost> = {
       "## Adım 1: Hasar Bildirimi",
       "Cihazınızda bir arıza veya hasar meydana geldiğinde ilk yapmanız gereken sigorta firmanıza hasar bildirimi yapmaktır. Bu bildirimi sigorta firmanızın çağrı merkezi, web sitesi veya mobil uygulaması üzerinden gerçekleştirebilirsiniz. Bildirimin ardından dosyanız oluşturulur ve EphorTech'e yönlendirilir.",
       "## Adım 2: EphorTech İletişimi",
-      "Dosyanız bize ulaştıktan sonra çağrı merkezimiz sizinle iletişime geçer. Bu görüşmede arızanın detayları, cihaz bilgileri ve size en uygun servis noktası belirlenir. Türkiye genelinde 81 ilde bulunan 1.000'e yakın servis noktamız sayesinde size en yakın lokasyondan hizmet sunulur.",
+      "Dosyanız bize ulaştıktan sonra çağrı merkezimiz sizinle iletişime geçer. Bu görüşmede arızanın detayları, cihaz bilgileri ve size en uygun servis noktası belirlenir. Türkiye genelinde 81 ilde bulunan 500'e yakın servis noktamız sayesinde size en yakın lokasyondan hizmet sunulur.",
       "## Adım 3: Cihaz Teslimi ve Ekspertiz",
       "Cihazınızı belirlenen servis noktasına teslim ettiğinizde, uzman teknisyenlerimiz detaylı bir ekspertiz raporu hazırlar. Bu raporda arızanın nedeni, onarım için gereken parçalar ve tahmini süre yer alır. Rapor sigorta firmasına iletilir ve onay süreci başlar.",
       "## Adım 4: Onarım Süreci",

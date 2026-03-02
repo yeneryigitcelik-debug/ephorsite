@@ -99,7 +99,7 @@ export default function Kurumlar() {
                 Servis <span className="gradient-text">Hizmetleri</span>
               </h2>
               <p className="text-[var(--text-secondary)] leading-relaxed text-lg">
-                Firmaların ofis içinde ve personellerinin kullandıkları elektronik cihazlara arıza/hasar durumunda tüm Türkiye&apos;de anlaşmalı olduğumuz 1.000&apos;e yakın yetkili servislerimizle garanti dahili veya garanti harici oluşan tüm teknik arızalarda ya da kullanıcı hasarlarında servis hizmeti verilir.
+                Firmaların ofis içinde ve personellerinin kullandıkları elektronik cihazlara arıza/hasar durumunda tüm Türkiye&apos;de anlaşmalı olduğumuz 500&apos;e yakın yetkili servislerimizle garanti dahili veya garanti harici oluşan tüm teknik arızalarda ya da kullanıcı hasarlarında servis hizmeti verilir.
               </p>
             </AnimatedSection>
           </div>
