@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Sigorta Firmaları | ePhortech",
   description: "Konut ve ticari poliçe kapsamında elektronik cihaz teminatları. 81 ilde kesintisiz servis ağı.",
+  alternates: { canonical: "https://ephortech.com/sigorta-firmalari" },
 };
 
 export default function SigortaFirmalari() {

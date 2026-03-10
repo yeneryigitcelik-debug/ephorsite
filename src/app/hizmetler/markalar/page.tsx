@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Markalar | ePhortech",
   description: "Ofis ve personel elektronik cihazlarında arıza ve hasar çözümleri. Profesyonel teknik servis.",
+  alternates: { canonical: "https://ephortech.com/markalar" },
 };
 
 export default function Markalar() {

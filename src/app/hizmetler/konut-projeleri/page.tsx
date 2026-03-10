@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Konut Projeleri | ePhortech",
   description: "Seçkin konut projelerine özel elektronik cihaz hizmetleri. Premium hizmet paketleri.",
+  alternates: { canonical: "https://ephortech.com/konut-projeleri" },
 };
 
 export default function KonutProjeleri() {

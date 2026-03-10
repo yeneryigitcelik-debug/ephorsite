@@ -5,13 +5,28 @@ const siteUrl = "https://ephortech.com";
 export const metadata: Metadata = {
   title: "Yasal Bilgiler",
   description:
-    "EphorTech gizlilik politikası, çerez politikası ve KVKK aydınlatma metni. Kişisel verilerinizin korunması hakkında detaylı bilgi.",
-  alternates: { canonical: "/yasal" },
+    "EphorTech gizlilik politikası, çerez politikası ve KVKK aydınlatma metni. Kişisel verilerinizin korunması ve haklarınız hakkında detaylı bilgi.",
+  keywords: [
+    "EphorTech gizlilik politikası",
+    "çerez politikası",
+    "KVKK aydınlatma metni",
+    "kişisel verilerin korunması",
+    "EphorTech yasal bilgiler",
+  ],
+  alternates: { canonical: `${siteUrl}/yasal` },
   openGraph: {
     title: "Yasal Bilgiler | EphorTech",
     description:
       "EphorTech gizlilik politikası, çerez politikası ve KVKK aydınlatma metni.",
-    url: "/yasal",
+    url: `${siteUrl}/yasal`,
+    type: "website",
+    locale: "tr_TR",
+  },
+  twitter: {
+    card: "summary",
+    title: "Yasal Bilgiler | EphorTech",
+    description:
+      "Gizlilik politikası, çerez politikası ve KVKK aydınlatma metni.",
   },
 };
 
