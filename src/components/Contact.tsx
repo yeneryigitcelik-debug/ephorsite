@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import AnimatedSection from "./AnimatedSection";
@@ -36,7 +36,7 @@ const contactInfo = [
   },
   {
     label: "Merkez Ofis",
-    value: "Barbaros Mh. Mor Sümbül Sk. No:5/A Deluxia Palace K:17/474 Ataşehir / İstanbul",
+    value: "Barbaros Mh. Mor Sumbul Sk. No:5/A Deluxia Palace K:17/474 Atasehir / Istanbul",
     href: null,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -50,7 +50,7 @@ const contactInfo = [
   },
   {
     label: "Teknik Servis",
-    value: "Cihangir Mah. E5 Yan Yol Üzeri Türksan Center A Blok No:291 2L Avcılar / İstanbul",
+    value: "Cihangir Mah. E5 Yan Yol Uzeri Turksan Center A Blok No:291 2L Avcilar / Istanbul",
     href: null,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -64,10 +64,40 @@ const contactInfo = [
   },
 ];
 
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+  kvkk?: string;
+}
+
 export default function Contact() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "", kvkk: false });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [formState, setFormState] = useState<"idle" | "submitting" | "success">("idle");
+
+  const validate = (): boolean => {
+    const newErrors: FormErrors = {};
+    if (!form.name.trim()) newErrors.name = "Ad Soyad gereklidir.";
+    if (!form.email.trim()) newErrors.email = "E-posta gereklidir.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) newErrors.email = "Gecerli bir e-posta giriniz.";
+    if (!form.subject) newErrors.subject = "Konu seciniz.";
+    if (!form.message.trim()) newErrors.message = "Mesajinizi yaziniz.";
+    if (!form.kvkk) newErrors.kvkk = "KVKK onayini vermelisiniz.";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+    setFormState("submitting");
+    await new Promise((r) => setTimeout(r, 1500));
+    setFormState("success");
+  };
 
   return (
     <section id="contact" className="relative py-20 sm:py-28 lg:py-32 overflow-hidden">
@@ -82,14 +112,14 @@ export default function Contact() {
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
             </svg>
-            İletişim
+            Iletisim
           </span>
           <h2 className="font-[var(--font-syne)] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
             Bizimle{" "}
-            <span className="gradient-text">İletişime Geçin</span>
+            <span className="gradient-text">Iletisime Gecin</span>
           </h2>
           <p className="mt-4 sm:mt-6 max-w-2xl mx-auto text-base sm:text-lg text-[var(--text-secondary)]">
-            Kurumsal çözümlerimiz hakkında bilgi almak için bize ulaşın.
+            Kurumsal cozumlerimiz hakkinda bilgi almak icin bize ulasin.
           </p>
         </AnimatedSection>
 
@@ -97,103 +127,144 @@ export default function Contact() {
           {/* Form */}
           <AnimatedSection delay={0.2} className="lg:col-span-3">
             <div className="bento-card p-5 sm:p-8 md:p-10">
-              <h3 className="font-[var(--font-syne)] text-lg sm:text-xl font-bold mb-6 sm:mb-8 flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--brand-blue)]/15 to-[var(--brand-blue-dark)]/10 border border-[var(--brand-blue)]/15 flex items-center justify-center text-[var(--brand-blue)]">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                  </svg>
-                </div>
-                Mesaj Gönderin
-              </h3>
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="group">
-                    <label htmlFor="contact-name" className="block text-sm font-medium text-[var(--text-secondary)] mb-2 group-focus-within:text-[var(--brand-blue)] transition-colors duration-300">Ad Soyad</label>
-                    <div className="input-focus-ring rounded-xl">
-                      <input
-                        id="contact-name"
-                        type="text"
-                        required
-                        placeholder="Adınız Soyadınız"
-                        onFocus={() => setFocusedField("name")}
-                        onBlur={() => setFocusedField(null)}
-                        className="w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border border-white/[0.06] text-white placeholder-[var(--text-muted)]/60 focus:outline-none focus:border-[var(--brand-blue)]/40 focus:bg-[var(--bg-secondary)]/80 transition-all duration-400"
-                      />
-                    </div>
-                  </div>
-                  <div className="group">
-                    <label htmlFor="contact-email" className="block text-sm font-medium text-[var(--text-secondary)] mb-2 group-focus-within:text-[var(--brand-blue)] transition-colors duration-300">E-posta</label>
-                    <div className="input-focus-ring rounded-xl">
-                      <input
-                        id="contact-email"
-                        type="email"
-                        required
-                        placeholder="ornek@sirket.com"
-                        onFocus={() => setFocusedField("email")}
-                        onBlur={() => setFocusedField(null)}
-                        className="w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border border-white/[0.06] text-white placeholder-[var(--text-muted)]/60 focus:outline-none focus:border-[var(--brand-blue)]/40 focus:bg-[var(--bg-secondary)]/80 transition-all duration-400"
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="group">
-                  <label htmlFor="contact-subject" className="block text-sm font-medium text-[var(--text-secondary)] mb-2 group-focus-within:text-[var(--brand-blue)] transition-colors duration-300">Konu</label>
-                  <div className="input-focus-ring rounded-xl">
-                    <select
-                      id="contact-subject"
-                      required
-                      onFocus={() => setFocusedField("subject")}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border border-white/[0.06] text-[var(--text-muted)] focus:outline-none focus:border-[var(--brand-blue)]/40 focus:bg-[var(--bg-secondary)]/80 transition-all duration-400 appearance-none cursor-pointer"
+              <AnimatePresence mode="wait">
+                {formState === "success" ? (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center justify-center py-16 text-center"
+                  >
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                      className="w-20 h-20 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-6"
                     >
-                      <option value="">Konu Seçiniz</option>
-                      <option value="sigorta">Sigorta Firmaları</option>
-                      <option value="kurum">Kurumsal Hizmetler</option>
-                      <option value="marka">Marka Çözümleri</option>
-                      <option value="konut">Konut Projeleri</option>
-                      <option value="diger">Diğer</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="group">
-                  <label htmlFor="contact-message" className="block text-sm font-medium text-[var(--text-secondary)] mb-2 group-focus-within:text-[var(--brand-blue)] transition-colors duration-300">Mesajınız</label>
-                  <div className="input-focus-ring rounded-xl">
-                    <textarea
-                      id="contact-message"
-                      rows={5}
-                      required
-                      placeholder="Mesajınızı buraya yazabilirsiniz..."
-                      onFocus={() => setFocusedField("message")}
-                      onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border border-white/[0.06] text-white placeholder-[var(--text-muted)]/60 focus:outline-none focus:border-[var(--brand-blue)]/40 focus:bg-[var(--bg-secondary)]/80 transition-all duration-400 resize-none"
-                    />
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <input
-                    id="contact-kvkk"
-                    type="checkbox"
-                    required
-                    className="mt-1 w-4 h-4 rounded border-white/20 bg-[var(--bg-secondary)] text-[var(--brand-blue)] focus:ring-[var(--brand-blue)]/30 cursor-pointer accent-[var(--brand-blue)]"
-                  />
-                  <label htmlFor="contact-kvkk" className="text-xs text-[var(--text-muted)] leading-relaxed cursor-pointer">
-                    <a href="/yasal#kvkk" target="_blank" rel="noopener noreferrer" className="text-[var(--brand-blue)] hover:underline">KVKK Aydınlatma Metni</a>&apos;ni okudum ve kişisel verilerimin işlenmesini kabul ediyorum.
-                  </label>
-                </div>
-                <button type="submit" className="group relative w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base text-white font-semibold overflow-hidden magnetic-btn">
-                  <span className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue-dark)] to-[var(--brand-blue)] transition-transform duration-500 group-hover:scale-105" />
-                  <span className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue)] to-[var(--brand-blue-light)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 delay-100" />
-                  </span>
-                  <span className="relative z-10 flex items-center justify-center gap-2">
-                    Gönder
-                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                    </svg>
-                  </span>
-                </button>
-              </form>
+                      <svg className="w-10 h-10 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                    </motion.div>
+                    <h3 className="font-[var(--font-syne)] text-2xl font-bold text-white mb-3">Mesajiniz Iletildi!</h3>
+                    <p className="text-[var(--text-secondary)] max-w-sm">En kisa surede sizinle iletisime gececegiz.</p>
+                  </motion.div>
+                ) : (
+                  <motion.div key="form">
+                    <h3 className="font-[var(--font-syne)] text-lg sm:text-xl font-bold mb-6 sm:mb-8 flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--brand-blue)]/15 to-[var(--brand-blue-dark)]/10 border border-[var(--brand-blue)]/15 flex items-center justify-center text-[var(--brand-blue)]">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                        </svg>
+                      </div>
+                      Mesaj Gonderin
+                    </h3>
+                    <form className="space-y-6" onSubmit={handleSubmit} noValidate>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div className="group">
+                          <label htmlFor="contact-name" className="block text-sm font-medium text-[var(--text-secondary)] mb-2 group-focus-within:text-[var(--brand-blue)] transition-colors duration-300">Ad Soyad</label>
+                          <div className="input-focus-ring rounded-xl">
+                            <input
+                              id="contact-name"
+                              type="text"
+                              placeholder="Adiniz Soyadiniz"
+                              value={form.name}
+                              onChange={(e) => { setForm({ ...form, name: e.target.value }); setErrors({ ...errors, name: undefined }); }}
+                              className={`w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border ${errors.name ? "border-red-500/50" : "border-white/[0.06]"} text-white placeholder-[var(--text-muted)]/60 focus:outline-none focus:border-[var(--brand-blue)]/40 focus:bg-[var(--bg-secondary)]/80 transition-all duration-400`}
+                            />
+                          </div>
+                          {errors.name && <motion.p initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} className="text-red-400 text-xs mt-1.5">{errors.name}</motion.p>}
+                        </div>
+                        <div className="group">
+                          <label htmlFor="contact-email" className="block text-sm font-medium text-[var(--text-secondary)] mb-2 group-focus-within:text-[var(--brand-blue)] transition-colors duration-300">E-posta</label>
+                          <div className="input-focus-ring rounded-xl">
+                            <input
+                              id="contact-email"
+                              type="email"
+                              placeholder="ornek@sirket.com"
+                              value={form.email}
+                              onChange={(e) => { setForm({ ...form, email: e.target.value }); setErrors({ ...errors, email: undefined }); }}
+                              className={`w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border ${errors.email ? "border-red-500/50" : "border-white/[0.06]"} text-white placeholder-[var(--text-muted)]/60 focus:outline-none focus:border-[var(--brand-blue)]/40 focus:bg-[var(--bg-secondary)]/80 transition-all duration-400`}
+                            />
+                          </div>
+                          {errors.email && <motion.p initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} className="text-red-400 text-xs mt-1.5">{errors.email}</motion.p>}
+                        </div>
+                      </div>
+                      <div className="group">
+                        <label htmlFor="contact-subject" className="block text-sm font-medium text-[var(--text-secondary)] mb-2 group-focus-within:text-[var(--brand-blue)] transition-colors duration-300">Konu</label>
+                        <div className="input-focus-ring rounded-xl">
+                          <select
+                            id="contact-subject"
+                            value={form.subject}
+                            onChange={(e) => { setForm({ ...form, subject: e.target.value }); setErrors({ ...errors, subject: undefined }); }}
+                            className={`w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border ${errors.subject ? "border-red-500/50" : "border-white/[0.06]"} text-[var(--text-muted)] focus:outline-none focus:border-[var(--brand-blue)]/40 focus:bg-[var(--bg-secondary)]/80 transition-all duration-400 appearance-none cursor-pointer`}
+                          >
+                            <option value="">Konu Seciniz</option>
+                            <option value="sigorta">Sigorta Firmalari</option>
+                            <option value="kurum">Kurumsal Hizmetler</option>
+                            <option value="marka">Marka Cozumleri</option>
+                            <option value="konut">Konut Projeleri</option>
+                            <option value="diger">Diger</option>
+                          </select>
+                        </div>
+                        {errors.subject && <motion.p initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} className="text-red-400 text-xs mt-1.5">{errors.subject}</motion.p>}
+                      </div>
+                      <div className="group">
+                        <label htmlFor="contact-message" className="block text-sm font-medium text-[var(--text-secondary)] mb-2 group-focus-within:text-[var(--brand-blue)] transition-colors duration-300">Mesajiniz</label>
+                        <div className="input-focus-ring rounded-xl">
+                          <textarea
+                            id="contact-message"
+                            rows={5}
+                            placeholder="Mesajinizi buraya yazabilirsiniz..."
+                            value={form.message}
+                            onChange={(e) => { setForm({ ...form, message: e.target.value }); setErrors({ ...errors, message: undefined }); }}
+                            className={`w-full px-4 py-3.5 rounded-xl bg-[var(--bg-secondary)] border ${errors.message ? "border-red-500/50" : "border-white/[0.06]"} text-white placeholder-[var(--text-muted)]/60 focus:outline-none focus:border-[var(--brand-blue)]/40 focus:bg-[var(--bg-secondary)]/80 transition-all duration-400 resize-none`}
+                          />
+                        </div>
+                        {errors.message && <motion.p initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} className="text-red-400 text-xs mt-1.5">{errors.message}</motion.p>}
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <input
+                          id="contact-kvkk"
+                          type="checkbox"
+                          checked={form.kvkk}
+                          onChange={(e) => { setForm({ ...form, kvkk: e.target.checked }); setErrors({ ...errors, kvkk: undefined }); }}
+                          className="mt-1 w-4 h-4 rounded border-white/20 bg-[var(--bg-secondary)] text-[var(--brand-blue)] focus:ring-[var(--brand-blue)]/30 cursor-pointer accent-[var(--brand-blue)]"
+                        />
+                        <label htmlFor="contact-kvkk" className="text-xs text-[var(--text-muted)] leading-relaxed cursor-pointer">
+                          <a href="/yasal#kvkk" target="_blank" rel="noopener noreferrer" className="text-[var(--brand-blue)] hover:underline">KVKK Aydinlatma Metni</a>&apos;ni okudum ve kisisel verilerimin islenmesini kabul ediyorum.
+                        </label>
+                      </div>
+                      {errors.kvkk && <motion.p initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} className="text-red-400 text-xs -mt-4">{errors.kvkk}</motion.p>}
+                      <button
+                        type="submit"
+                        disabled={formState === "submitting"}
+                        className="group relative w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 rounded-full text-sm sm:text-base text-white font-semibold overflow-hidden magnetic-btn disabled:opacity-70"
+                      >
+                        <span className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue-dark)] to-[var(--brand-blue)] transition-transform duration-500 group-hover:scale-105" />
+                        <span className="absolute inset-0 bg-gradient-to-r from-[var(--brand-blue)] to-[var(--brand-blue-light)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 delay-100" />
+                        </span>
+                        <span className="relative z-10 flex items-center justify-center gap-2">
+                          {formState === "submitting" ? (
+                            <>
+                              <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                              Gonderiliyor...
+                            </>
+                          ) : (
+                            <>
+                              Gonder
+                              <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                              </svg>
+                            </>
+                          )}
+                        </span>
+                      </button>
+                    </form>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </AnimatedSection>
 

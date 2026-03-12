@@ -16,8 +16,6 @@ import BlogPreview from "@/components/BlogPreview";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import CursorGlow from "@/components/CursorGlow";
-import WhatsAppButton from "@/components/WhatsAppButton";
 
 const SplashScreen = dynamic(() => import("@/components/SplashScreen"), {
   ssr: false,
@@ -39,10 +37,8 @@ export default function HomeContent() {
           transition: "opacity 0.5s ease",
         }}
       >
-        <CursorGlow />
         <Navbar />
-        <WhatsAppButton />
-        <main>
+        <main id="main-content">
           <Hero />
           <Marquee />
           <Partners />

@@ -443,6 +443,16 @@ body {
   transition: opacity 0.4s ease;
 }
 
+/* Focus visible ring */
+:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;

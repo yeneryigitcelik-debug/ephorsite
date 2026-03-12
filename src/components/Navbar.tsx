@@ -1,25 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { name: "Anasayfa", href: "/" },
-  { name: "Sigorta Firmaları", href: "/sigorta-firmalari" },
+  { name: "Sigorta Firmalari", href: "/sigorta-firmalari" },
   { name: "Kurumlar", href: "/kurumlar" },
   { name: "Markalar", href: "/markalar" },
   { name: "Konut Projeleri", href: "/konut-projeleri" },
   { name: "Blog", href: "/blog" },
   { name: "Kariyer", href: "/kariyer" },
-  { name: "İletişim", href: "/iletisim" },
-  { name: "Hakkımızda", href: "/hakkimizda" },
+  { name: "Iletisim", href: "/iletisim" },
+  { name: "Hakkimizda", href: "/hakkimizda" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -32,6 +40,35 @@ export default function Navbar() {
     else document.body.style.overflow = "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
+
+  // Focus trap for mobile menu
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (!mobileOpen) return;
+    if (e.key === "Escape") {
+      setMobileOpen(false);
+      return;
+    }
+    if (e.key === "Tab" && mobileMenuRef.current) {
+      const focusable = mobileMenuRef.current.querySelectorAll<HTMLElement>(
+        'a, button, [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
 
   return (
     <>
@@ -62,7 +99,7 @@ export default function Navbar() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 0115 0z" />
                 </svg>
-                <span className="truncate max-w-[200px]">Ataşehir / İstanbul</span>
+                <span className="truncate max-w-[200px]">Atasehir / Istanbul</span>
               </div>
               <div className="w-px h-4 bg-white/[0.06]" />
               <div className="flex items-center gap-2">
@@ -112,9 +149,20 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="px-3 py-2 text-sm font-medium text-[var(--text-secondary)] hover:text-white transition-colors duration-300 rounded-lg hover:bg-white/[0.03] whitespace-nowrap"
+                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-lg whitespace-nowrap ${
+                    isActive(link.href)
+                      ? "text-white"
+                      : "text-[var(--text-secondary)] hover:text-white hover:bg-white/[0.03]"
+                  }`}
                 >
                   {link.name}
+                  {isActive(link.href) && (
+                    <motion.span
+                      layoutId="activeNav"
+                      className="absolute bottom-0 left-3 right-3 h-0.5 bg-[var(--brand-blue)] rounded-full"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
                 </Link>
               ))}
             </div>
@@ -131,7 +179,7 @@ export default function Navbar() {
                 href="/iletisim"
                 className="px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-[var(--brand-blue-dark)] to-[var(--brand-blue)] rounded-full hover:shadow-lg hover:shadow-[var(--brand-blue)]/20 transition-all duration-300"
               >
-                İletişime Geç
+                Iletisime Gec
               </Link>
             </div>
 
@@ -139,7 +187,7 @@ export default function Navbar() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden relative w-11 h-11 flex items-center justify-center -mr-1"
-              aria-label={mobileOpen ? "Menüyü kapat" : "Menüyü aç"}
+              aria-label={mobileOpen ? "Menuyu kapat" : "Menuyu ac"}
               aria-expanded={mobileOpen}
             >
               <div className="flex flex-col gap-1.5">
@@ -165,6 +213,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            ref={mobileMenuRef}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -181,7 +230,11 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="text-2xl font-[var(--font-syne)] font-bold text-white hover:text-[var(--brand-blue)] transition-colors"
+                    className={`text-2xl font-[var(--font-syne)] font-bold transition-colors ${
+                      isActive(link.href)
+                        ? "text-[var(--brand-blue)]"
+                        : "text-white hover:text-[var(--brand-blue)]"
+                    }`}
                   >
                     {link.name}
                   </Link>
@@ -197,7 +250,7 @@ export default function Navbar() {
                   onClick={() => setMobileOpen(false)}
                   className="mt-4 px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-[var(--brand-blue-dark)] to-[var(--brand-blue)] rounded-full"
                 >
-                  İletişime Geç
+                  Iletisime Gec
                 </Link>
               </motion.div>
               {/* Mobile contact info */}

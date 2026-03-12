@@ -6,6 +6,7 @@ import Link from "next/link";
 import AnimatedSection, { TextReveal } from "./AnimatedSection";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Breadcrumb from "./Breadcrumb";
 
 interface Feature {
   title: string;
@@ -80,7 +81,7 @@ export default function ServicePageTemplate({
   return (
     <>
       <Navbar />
-      <main>
+      <main id="main-content">
         {/* ===== HERO - Abstract animated geometric ===== */}
         <section ref={heroRef} className="relative min-h-[85vh] flex items-end overflow-hidden">
           {/* Animated background layer */}
@@ -200,22 +201,15 @@ export default function ServicePageTemplate({
           {/* Decorative line */}
           <div className="absolute left-12 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[var(--brand-blue)]/10 to-transparent hidden lg:block z-[2]" />
 
-          <motion.div style={{ opacity: heroOpacity }} className="relative z-10 mx-auto max-w-7xl px-4 sm:px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-24 w-full">
+          <motion.div style={{ opacity: heroOpacity }} className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-24 w-full">
             {/* Breadcrumb */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
+              className="mb-10"
             >
-              <Link
-                href="/"
-                className="inline-flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-[var(--brand-blue)] transition-colors mb-10 group"
-              >
-                <svg className="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                Tüm Hizmetler
-              </Link>
+              <Breadcrumb items={[{ label: "Anasayfa", href: "/" }, { label: title }]} />
             </motion.div>
 
             {/* Badge */}
@@ -473,7 +467,7 @@ export default function ServicePageTemplate({
           {/* Background decoration */}
           <div className="absolute inset-0 bg-radial-[at_center] from-[var(--brand-blue)]/[0.04] to-transparent" />
 
-          <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-4 sm:px-6 lg:px-8 text-center">
+          <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedSection>
               <div className="relative gradient-border p-6 sm:p-10 md:p-16 rounded-3xl overflow-hidden">
                 {/* Inner glow */}

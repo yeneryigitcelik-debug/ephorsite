@@ -3,14 +3,13 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CursorGlow from "@/components/CursorGlow";
 import AnimatedSection from "@/components/AnimatedSection";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import Breadcrumb from "@/components/Breadcrumb";
 import type { BlogPost } from "@/lib/blog-data";
 
 const categoryColors: Record<string, string> = {
   Sigorta: "from-blue-500/20 to-blue-600/20 text-blue-400 border-blue-500/20",
-  "Bakım Rehberi": "from-emerald-500/20 to-emerald-600/20 text-emerald-400 border-emerald-500/20",
+  "Bakim Rehberi": "from-emerald-500/20 to-emerald-600/20 text-emerald-400 border-emerald-500/20",
   Kurumsal: "from-violet-500/20 to-violet-600/20 text-violet-400 border-violet-500/20",
   Rehber: "from-amber-500/20 to-amber-600/20 text-amber-400 border-amber-500/20",
   "Konut Projeleri": "from-rose-500/20 to-rose-600/20 text-rose-400 border-rose-500/20",
@@ -20,25 +19,14 @@ const categoryColors: Record<string, string> = {
 export default function BlogPostClient({ post }: { post: BlogPost }) {
   return (
     <>
-      <CursorGlow />
       <Navbar />
-      <WhatsAppButton />
-      <main>
+      <main id="main-content">
         {/* Hero */}
         <section className="relative pt-32 pb-16 overflow-hidden">
           <div className="hero-gradient" />
           <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <Breadcrumb items={[{ label: "Anasayfa", href: "/" }, { label: "Blog", href: "/blog" }, { label: post.title }]} />
             <AnimatedSection>
-              <Link
-                href="/blog"
-                className="inline-flex items-center gap-2 text-sm text-[var(--text-muted)] hover:text-[var(--brand-blue)] transition-colors mb-8 group"
-              >
-                <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                </svg>
-                Tüm Yazılar
-              </Link>
-
               <div className="flex flex-wrap items-center gap-3 mb-6">
                 <span className={`inline-flex px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r border ${categoryColors[post.category] || ""}`}>
                   {post.category}
@@ -98,14 +86,14 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                   Daha fazla bilgi almak ister misiniz?
                 </h3>
                 <p className="text-[var(--text-secondary)] text-sm sm:text-base mb-6">
-                  EphorTech uzman ekibi sorularınızı yanıtlamak için hazır.
+                  EphorTech uzman ekibi sorularinizi yanitlamak icin hazir.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href="/iletisim"
                     className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-[var(--brand-blue-dark)] to-[var(--brand-blue)] rounded-full hover:shadow-lg hover:shadow-[var(--brand-blue)]/20 transition-all duration-300"
                   >
-                    İletişime Geç
+                    Iletisime Gec
                   </Link>
                   <a
                     href="tel:08503350860"
@@ -129,7 +117,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
                 <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                 </svg>
-                Tüm Yazılara Dön
+                Tum Yazilara Don
               </Link>
             </div>
           </div>

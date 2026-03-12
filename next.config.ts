@@ -9,6 +9,28 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  redirects: async () => [
+    {
+      source: "/hizmetler/sigorta-firmalari",
+      destination: "/sigorta-firmalari",
+      permanent: true,
+    },
+    {
+      source: "/hizmetler/kurumlar",
+      destination: "/kurumlar",
+      permanent: true,
+    },
+    {
+      source: "/hizmetler/markalar",
+      destination: "/markalar",
+      permanent: true,
+    },
+    {
+      source: "/hizmetler/konut-projeleri",
+      destination: "/konut-projeleri",
+      permanent: true,
+    },
+  ],
   headers: async () => [
     {
       source: "/:all*(svg|jpg|jpeg|png|webp|avif|ico|woff|woff2)",

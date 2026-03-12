@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Syne, Outfit } from "next/font/google";
 import "./globals.css";
 import CookieConsent from "@/components/CookieConsent";
+import GlobalWidgets from "@/components/GlobalWidgets";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -212,7 +213,14 @@ export default function RootLayout({
       <body
         className={`${syne.variable} ${outfit.variable} antialiased grain`}
       >
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[var(--brand-blue)] focus:text-white focus:text-sm focus:font-semibold"
+        >
+          Ana icerigi atla
+        </a>
         {children}
+        <GlobalWidgets />
         <CookieConsent />
       </body>
     </html>
